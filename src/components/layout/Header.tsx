@@ -17,16 +17,16 @@ const Header = () => {
           <Link href="#services" className="text-sm font-medium hover:text-primary transition-colors" prefetch={false}>
             Services
           </Link>
-          {/* <Link href="#recommendations" className="text-sm font-medium hover:text-primary transition-colors" prefetch={false}>
-            For You
-          </Link> */} {/* Removed "For You" link */}
           <Link href="#about" className="text-sm font-medium hover:text-primary transition-colors" prefetch={false}>
             About
           </Link>
         </nav>
         <div className="flex items-center gap-2">
-          <Button variant="outline" size="sm">Login</Button>
-          <Button size="sm" className="bg-accent hover:bg-accent/90 text-accent-foreground">Sign Up</Button>
+          <Button size="sm" className="bg-accent hover:bg-accent/90 text-accent-foreground" asChild>
+            <a href="https://studio.wiru.app" target="_blank" rel="noopener noreferrer">
+              Sign Up
+            </a>
+          </Button>
         </div>
         {/* Mobile Menu Trigger - Can be added later if needed */}
       </div>
