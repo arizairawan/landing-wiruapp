@@ -5,7 +5,7 @@ import type { Template, Category, Technology } from '@/data/templates';
 import { mockTemplates } from '@/data/templates';
 import TemplateGrid from '@/components/templates/TemplateGrid';
 import TemplateFilter from '@/components/templates/TemplateFilter';
-import AiRecommendationSection from '@/components/ai/AiRecommendationSection';
+// import AiRecommendationSection from '@/components/ai/AiRecommendationSection'; // Removed import
 import { Button } from '@/components/ui/button';
 import { Rocket, Wrench, CheckCircle } from 'lucide-react';
 import Image from 'next/image';
@@ -73,7 +73,7 @@ export default function HomePage() {
         </div>
       </section>
       
-      <AiRecommendationSection />
+      {/* <AiRecommendationSection /> */} {/* Removed AiRecommendationSection component */}
 
       <section id="services" className="py-12 md:py-16 lg:py-20">
         <div className="container mx-auto px-4 md:px-6">

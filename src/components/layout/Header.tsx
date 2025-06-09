@@ -17,9 +17,9 @@ const Header = () => {
           <Link href="#services" className="text-sm font-medium hover:text-primary transition-colors" prefetch={false}>
             Services
           </Link>
-          <Link href="#recommendations" className="text-sm font-medium hover:text-primary transition-colors" prefetch={false}>
+          {/* <Link href="#recommendations" className="text-sm font-medium hover:text-primary transition-colors" prefetch={false}>
             For You
-          </Link>
+          </Link> */} {/* Removed "For You" link */}
           <Link href="#about" className="text-sm font-medium hover:text-primary transition-colors" prefetch={false}>
             About
           </Link>
