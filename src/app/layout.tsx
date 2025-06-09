@@ -4,9 +4,59 @@ import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://wiru.app'; // Fallback, ideally set in .env
+
 export const metadata: Metadata = {
   title: 'Wiru.app: Bento Web Marketplace',
-  description: 'Purchase website/application source code or request development services.',
+  description: 'Purchase website/application source code or request development services. Discover high-quality templates or get custom solutions.',
+  keywords: ['web templates', 'app source code', 'development services', 'NextJS templates', 'React templates', 'Wiru.app', 'Bento Web Marketplace'],
+  authors: [{ name: 'Wiru.app Team', url: siteUrl }],
+  creator: 'Wiru.app Team',
+  publisher: 'Wiru.app',
+  alternates: {
+    canonical: siteUrl,
+  },
+  openGraph: {
+    type: 'website',
+    url: siteUrl,
+    title: 'Wiru.app: Bento Web Marketplace',
+    description: 'Purchase website/application source code or request development services. Discover high-quality templates or get custom solutions.',
+    siteName: 'Wiru.app',
+    images: [
+      {
+        url: `${siteUrl}/og-image.png`, // Placeholder, ensure this image exists in your public folder
+        width: 1200,
+        height: 630,
+        alt: 'Wiru.app Marketplace Hero Image',
+      },
+    ],
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@wiruapp', // Replace with your actual Twitter handle
+    creator: '@wiruapp_team', // Replace with your team's or creator's Twitter handle
+    title: 'Wiru.app: Bento Web Marketplace',
+    description: 'Purchase website/application source code or request development services. Discover high-quality templates or get custom solutions.',
+    images: [`${siteUrl}/twitter-image.png`], // Placeholder, ensure this image exists
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon-16x16.png', // Example, ensure these exist
+    apple: '/apple-touch-icon.png',  // Example, ensure these exist
+  },
+  manifest: `${siteUrl}/site.webmanifest`, // Example, ensure this exists
 };
 
 export default function RootLayout({
