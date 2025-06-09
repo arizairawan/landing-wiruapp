@@ -7,9 +7,9 @@ import Footer from '@/components/layout/Footer';
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://wiru.app'; // Fallback, ideally set in .env
 
 export const metadata: Metadata = {
-  title: 'Wiru.app: Bento Web Marketplace',
+  title: 'Wiru.app: Your Marketplace for Web & App Solutions',
   description: 'Purchase website/application source code or request development services. Discover high-quality templates or get custom solutions.',
-  keywords: ['web templates', 'app source code', 'development services', 'NextJS templates', 'React templates', 'Wiru.app', 'Bento Web Marketplace'],
+  keywords: ['web templates', 'app source code', 'development services', 'NextJS templates', 'React templates', 'Wiru.app', 'Marketplace', 'Web Solutions', 'App Solutions'],
   authors: [{ name: 'Wiru.app Team', url: siteUrl }],
   creator: 'Wiru.app Team',
   publisher: 'Wiru.app',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: siteUrl,
-    title: 'Wiru.app: Bento Web Marketplace',
+    title: 'Wiru.app: Your Marketplace for Web & App Solutions',
     description: 'Purchase website/application source code or request development services. Discover high-quality templates or get custom solutions.',
     siteName: 'Wiru.app',
     images: [
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@wiruapp', // Replace with your actual Twitter handle
     creator: '@wiruapp_team', // Replace with your team's or creator's Twitter handle
-    title: 'Wiru.app: Bento Web Marketplace',
+    title: 'Wiru.app: Your Marketplace for Web & App Solutions',
     description: 'Purchase website/application source code or request development services. Discover high-quality templates or get custom solutions.',
     images: [`${siteUrl}/twitter-image.png`], // Placeholder, ensure this image exists
   },
