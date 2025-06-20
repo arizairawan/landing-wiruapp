@@ -53,11 +53,11 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/wiru-app-logo.png', // Primary favicon using the new logo
-    shortcut: '/wiru-app-logo.png', // For older browsers, can be a different size e.g. 16x16
-    apple: '/wiru-app-logo.png',  // For Apple devices
+    icon: '/wiru-app-logo.png', 
+    shortcut: '/wiru-app-logo.png', 
+    apple: '/wiru-app-logo.png',  
   },
-  manifest: `${siteUrl}/site.webmanifest`, 
+  manifest: '/site.webmanifest', // Changed to relative path
 };
 
 export default function RootLayout({
