@@ -29,7 +29,7 @@ export default function HomePage() {
     }
 
     if (filters.technology !== 'All') {
-      tempTemplates = tempTemplates.filter(template => template.tags.includes(filters.technology) || template.tags.includes(filters.technology.replace(/\s/g, ''))); // Handle cases like "Online Store" vs "OnlineStore"
+      tempTemplates = tempTemplates.filter(template => template.tags.includes(filters.technology) || template.tags.includes(filters.technology.replace(/\s/g, ''))); 
     }
 
     setFilteredTemplates(tempTemplates);
@@ -54,7 +54,7 @@ export default function HomePage() {
             <Button size="lg" variant="secondary" className="bg-background/20 hover:bg-background/30 text-primary-foreground" asChild>
               <a href="#templates">Explore Templates <Rocket className="ml-2 h-5 w-5" /></a>
             </Button>
-            <Button size="lg" variant="outline" className="border-primary-foreground/50 text-accent-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground" asChild>
+            <Button size="lg" variant="outline" className="text-accent-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground border-primary-foreground/50" asChild>
                <a href="#services">Request Service <Wrench className="ml-2 h-5 w-5" /></a>
             </Button>
           </div>
@@ -98,7 +98,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="about" className="py-12 md:py-16 lg:py-20 bg-secondary text-secondary-foreground glass-surface">
+      <section id="about" className="py-12 md:py-16 lg:py-20 bg-secondary text-secondary-foreground">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <h2 className="text-3xl font-headline font-semibold text-primary mb-4">About Wiru.app</h2>
           <p className="max-w-3xl mx-auto text-lg">
