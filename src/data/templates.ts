@@ -1,3 +1,4 @@
+
 export interface Template {
   id: string;
   name: string;
@@ -25,7 +26,7 @@ export const mockTemplates: Template[] = [
     priceSourceCode: 99,
     features: ['User authentication', 'Product listings', 'Shopping cart', 'Admin Dashboard'],
     previewUrl: '#',
-    gridSpanDesktop: 2,
+    gridSpanDesktop: 1, // Changed from 2
     gridSpanMobile: 1,
   },
   {
@@ -81,7 +82,7 @@ export const mockTemplates: Template[] = [
     priceSourceCode: 129,
     features: ['Task creation & assignment', 'Project boards', 'User collaboration', 'Notifications'],
     previewUrl: '#',
-    gridSpanDesktop: 2,
+    gridSpanDesktop: 1, // Changed from 2
     gridSpanMobile: 1,
   },
   {
@@ -105,3 +106,4 @@ export type Category = typeof categories[number];
 
 export const technologies = ['All', 'NextJS', 'React', 'VueJS', 'TailwindCSS', 'Figma', 'Firebase', 'Gatsby', 'Online Store', 'SaaS', 'Portfolio', 'Mobile', 'Productivity', 'Blog'] as const;
 export type Technology = typeof technologies[number];
+
