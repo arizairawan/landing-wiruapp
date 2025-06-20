@@ -5,7 +5,6 @@ import type { Template, Category, Technology } from '@/data/templates';
 import { mockTemplates } from '@/data/templates';
 import TemplateGrid from '@/components/templates/TemplateGrid';
 import TemplateFilter from '@/components/templates/TemplateFilter';
-// import AiRecommendationSection from '@/components/ai/AiRecommendationSection'; // Removed import
 import { Button } from '@/components/ui/button';
 import { Rocket, Wrench, CheckCircle } from 'lucide-react';
 import Image from 'next/image';
@@ -55,7 +54,7 @@ export default function HomePage() {
             <Button size="lg" variant="secondary" className="bg-background/20 hover:bg-background/30 text-primary-foreground" asChild>
               <a href="#templates">Explore Templates <Rocket className="ml-2 h-5 w-5" /></a>
             </Button>
-            <Button size="lg" variant="outline" className="border-primary-foreground/50 text-accent hover:bg-primary-foreground/10 hover:text-white" asChild>
+            <Button size="lg" variant="outline" className="border-primary-foreground/50 text-accent-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground" asChild>
                <a href="#services">Request Service <Wrench className="ml-2 h-5 w-5" /></a>
             </Button>
           </div>
@@ -73,8 +72,6 @@ export default function HomePage() {
         </div>
       </section>
       
-      {/* <AiRecommendationSection /> */} {/* Removed AiRecommendationSection component */}
-
       <section id="services" className="py-12 md:py-16 lg:py-20">
         <div className="container mx-auto px-4 md:px-6">
             <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -101,10 +98,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="about" className="py-12 md:py-16 lg:py-20 bg-secondary/50">
+      <section id="about" className="py-12 md:py-16 lg:py-20 bg-secondary text-secondary-foreground glass-surface">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <h2 className="text-3xl font-headline font-semibold text-primary mb-4">About Wiru.app</h2>
-          <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
+          <p className="max-w-3xl mx-auto text-lg">
             Wiru.app is dedicated to empowering developers and entrepreneurs by providing high-quality digital assets and development services. 
             Our mission is to accelerate your journey from idea to launch with reliable, beautiful, and functional solutions. We believe in quality code and exceptional service.
           </p>
