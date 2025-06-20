@@ -11,33 +11,31 @@ import { Rocket, Wrench, CheckCircle, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 
 export default function HomePage() {
-  // Display the first 4 templates on the homepage
-  // Ensure all templates on the homepage have gridSpanDesktop = 1 for uniform size
   const homePageTemplates = mockTemplates.slice(0, 4).map(template => ({
     ...template,
     gridSpanDesktop: 1, 
-    gridSpanMobile: 1, // Also ensure mobile span is consistent if needed
+    gridSpanMobile: 1,
   }));
 
   return (
     <>
-      <section className="py-16 md:py-24 lg:py-32 bg-gradient-to-br from-primary via-primary to-accent text-primary-foreground">
-        <div className="container mx-auto px-4 md:px-6 text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-headline font-bold mb-6">
+      <section className="py-16 md:py-24 lg:py-32 bg-background text-center">
+        <div className="container mx-auto px-4 md:px-6">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-headline font-bold text-primary mb-6">
             Your Marketplace for Web & App Solutions
           </h1>
-          <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-primary-foreground/90">
+          <p className="text-lg md:text-xl text-foreground/90 mb-8 max-w-3xl mx-auto">
             Discover high-quality website and application templates, or let our experts build your vision from scratch.
             Wiru.app provides source code and full development services.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button size="lg" variant="secondary" className="bg-background/20 hover:bg-background/30 text-primary-foreground" asChild>
+            <Button size="lg" variant="default" asChild>
               <Link href="/templates">Explore Templates <Rocket className="ml-2 h-5 w-5" /></Link>
             </Button>
             <Button 
               size="lg" 
-              variant="outline" 
-              className="text-accent hover:bg-primary-foreground/10 hover:text-white border-primary-foreground/50" 
+              variant="outline"
+              className="text-accent-foreground hover:text-accent-foreground"
               asChild
             >
                <a href="#services">Request Service <Wrench className="ml-2 h-5 w-5" /></a>
@@ -46,7 +44,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="templates" className="py-12 md:py-16 lg:py-20">
+      <section id="templates" className="py-12 md:py-16 lg:py-20 bg-secondary">
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="text-3xl font-headline font-semibold text-center mb-4 text-primary">Explore Our Templates</h2>
           <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
@@ -65,7 +63,7 @@ export default function HomePage() {
         </div>
       </section>
       
-      <section id="services" className="py-12 md:py-16 lg:py-20">
+      <section id="services" className="py-12 md:py-16 lg:py-20 bg-background">
         <div className="container mx-auto px-4 md:px-6">
             <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
@@ -84,7 +82,7 @@ export default function HomePage() {
                         Get a Free Quote <Wrench className="ml-2 h-5 w-5" />
                     </Button>
                 </div>
-                <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-xl order-first md:order-last">
+                <div className="relative aspect-[4/3] rounded-lg overflow-hidden border order-first md:order-last">
                      <Image src="https://placehold.co/600x450.png" alt="Custom Development Services" layout="fill" objectFit="cover" data-ai-hint="team meeting"/>
                 </div>
             </div>

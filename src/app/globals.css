@@ -7,8 +7,8 @@
     scroll-behavior: smooth;
   }
   :root {
-    --background: 240 5% 96%; /* Light Gray */
-    --foreground: 240 10% 3.9%; /* Dark Gray / Almost Black */
+    --background: 0 0% 100%; /* White */
+    --foreground: 240 10% 3.9%; /* Dark Gray */
 
     --card: 0 0% 100%; /* White */
     --card-foreground: 240 10% 3.9%;
@@ -19,8 +19,8 @@
     --primary: 330 80% 55%; /* Vivid Pink/Red */
     --primary-foreground: 0 0% 100%; /* White */
 
-    --secondary: 270 60% 95%; /* Light Lavender */
-    --secondary-foreground: 270 40% 30%; /* Dark Purple */
+    --secondary: 240 5% 96%; /* Very Light Gray */
+    --secondary-foreground: 240 10% 3.9%; /* Dark Gray text on secondary */
 
     --muted: 240 5% 90%; /* Lighter Gray */
     --muted-foreground: 240 4% 45%; /* Medium Gray */
@@ -31,7 +31,7 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 300 20% 85%; /* Light Purple-Gray Border */
+    --border: 240 5% 88%; /* Light Gray Border */
     --input: 0 0% 100%; /* White */
     --ring: 330 70% 65%; /* Brighter Pink/Red for Ring */
 
@@ -42,43 +42,43 @@
     --chart-5: 210 70% 60%;
     --radius: 0.5rem;
 
-    --sidebar-background: 270 40% 97%; /* Very Light Lavender */
-    --sidebar-foreground: 270 20% 25%; /* Darker Purple-Gray */
-    --sidebar-primary: 330 75% 50%; /* Primary Red for Sidebar */
+    --sidebar-background: 0 0% 100%; /* White */
+    --sidebar-foreground: 240 10% 3.9%; /* Dark Gray */
+    --sidebar-primary: 330 75% 50%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 270 50% 93%; /* Lighter Lavender Accent */
-    --sidebar-accent-foreground: 270 40% 30%;
-    --sidebar-border: 270 20% 88%;
+    --sidebar-accent: 240 5% 95%; /* Very Light Gray Accent */
+    --sidebar-accent-foreground: 240 10% 3.9%;
+    --sidebar-border: 240 5% 88%;
     --sidebar-ring: 330 75% 60%;
   }
 
   .dark {
-    --background: 270 15% 10%; /* Dark Desaturated Purple */
+    --background: 240 6% 10%; /* Very Dark Gray */
     --foreground: 0 0% 95%; /* Light Gray */
 
-    --card: 270 10% 15%; /* Darker Purple-Gray */
+    --card: 240 6% 12%; /* Slightly Lighter Dark Gray */
     --card-foreground: 0 0% 95%;
 
-    --popover: 270 10% 15%;
+    --popover: 240 6% 12%;
     --popover-foreground: 0 0% 95%;
 
     --primary: 330 70% 65%; /* Lighter Pink/Red */
-    --primary-foreground: 330 10% 15%; /* Darker text for contrast */
+    --primary-foreground: 240 6% 10%; /* Darker text for contrast */
 
-    --secondary: 270 15% 20%; /* Darker Lavender */
+    --secondary: 240 6% 15%; /* Darker Gray */
     --secondary-foreground: 0 0% 80%; /* Lighter Gray for text */
 
-    --muted: 270 5% 25%; /* Even Darker Muted Purple */
+    --muted: 240 5% 20%; /* Even Darker Muted Gray */
     --muted-foreground: 0 0% 60%; /* Medium Gray */
 
     --accent: 270 60% 70%; /* Lighter Vibrant Purple */
-    --accent-foreground: 270 10% 15%; /* Darker text */
+    --accent-foreground: 240 6% 10%; /* Darker text */
 
     --destructive: 0 70% 50%; /* Darker Red */
     --destructive-foreground: 0 0% 98%;
 
-    --border: 300 20% 30%; /* Darker Purple-Gray Border */
-    --input: 270 10% 20%; /* Dark Input Background */
+    --border: 240 5% 25%; /* Darker Gray Border */
+    --input: 240 6% 15%; /* Dark Input Background */
     --ring: 330 60% 70%; /* Brighter Pink/Red Ring */
 
     --chart-1: 330 70% 71%;
@@ -87,13 +87,13 @@
     --chart-4: 240 55% 80%;
     --chart-5: 210 65% 70%;
 
-    --sidebar-background: 270 10% 12%; /* Very Dark Lavender for Sidebar */
+    --sidebar-background: 240 6% 10%; /* Very Dark Gray for Sidebar */
     --sidebar-foreground: 0 0% 85%;
     --sidebar-primary: 330 70% 60%;
     --sidebar-primary-foreground: 0 0% 10%;
-    --sidebar-accent: 270 15% 25%;
+    --sidebar-accent: 240 6% 15%;
     --sidebar-accent-foreground: 0 0% 85%;
-    --sidebar-border: 270 10% 28%;
+    --sidebar-border: 240 5% 25%;
     --sidebar-ring: 330 70% 65%;
   }
 }

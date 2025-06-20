@@ -12,7 +12,7 @@ interface TemplateCardProps {
 
 const TemplateCard: React.FC<TemplateCardProps> = ({ template }) => {
   return (
-    <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col group">
+    <Card className="overflow-hidden h-full flex flex-col group border">
       <CardHeader className="p-0 relative">
         <div className="aspect-[4/3] w-full overflow-hidden">
           <Image

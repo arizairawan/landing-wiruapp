@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 
 const Header = () => {
   return (
-    <header className="bg-card/90 text-card-foreground shadow-sm sticky top-0 z-50 backdrop-blur-sm">
+    <header className="bg-background text-foreground sticky top-0 z-50 border-b">
       <div className="container mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group" prefetch={false}>
           <svg
@@ -27,21 +27,21 @@ const Header = () => {
         <nav className="hidden md:flex items-center gap-1 lg:gap-2">
           <Link 
             href="/templates" 
-            className="text-sm font-medium hover:text-primary hover:bg-primary/5 text-card-foreground/80 transition-all px-3 py-2 rounded-md" 
+            className="text-sm font-medium hover:text-primary hover:bg-primary/5 text-foreground/80 transition-all px-3 py-2 rounded-md" 
             prefetch={false}
           >
             Templates
           </Link>
           <Link 
             href="/#services" 
-            className="text-sm font-medium hover:text-primary hover:bg-primary/5 text-card-foreground/80 transition-all px-3 py-2 rounded-md" 
+            className="text-sm font-medium hover:text-primary hover:bg-primary/5 text-foreground/80 transition-all px-3 py-2 rounded-md" 
             prefetch={false}
           >
             Services
           </Link>
           <Link 
             href="/#about" 
-            className="text-sm font-medium hover:text-primary hover:bg-primary/5 text-card-foreground/80 transition-all px-3 py-2 rounded-md" 
+            className="text-sm font-medium hover:text-primary hover:bg-primary/5 text-foreground/80 transition-all px-3 py-2 rounded-md" 
             prefetch={false}
           >
             About
@@ -54,7 +54,6 @@ const Header = () => {
             </a>
           </Button>
         </div>
-        {/* Mobile Menu Trigger - Can be added later if needed */}
       </div>
     </header>
   );
