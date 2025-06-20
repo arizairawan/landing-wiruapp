@@ -96,6 +96,15 @@ export default function HomePage() {
       <section id="wiru-link" className="py-12 md:py-16 lg:py-20 bg-secondary">
         <div className="container mx-auto px-4 md:px-6">
             <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
+                     <Image 
+                        src="https://placehold.co/600x450.png" 
+                        alt="Wiru Link Page Example" 
+                        layout="fill" 
+                        objectFit="cover"
+                        data-ai-hint="link bio page"
+                     />
+                </div>
                 <div>
                     <h2 className="text-3xl font-headline font-semibold text-primary mb-6">
                       Introducing Wiru Link: Your All-in-One Link Page
@@ -110,18 +119,11 @@ export default function HomePage() {
                         <li className="flex items-center"><CheckCircle className="h-5 w-5 text-accent mr-3 flex-shrink-0" /> Perfect for creators, entrepreneurs, and businesses.</li>
                         <li className="flex items-center"><CheckCircle className="h-5 w-5 text-accent mr-3 flex-shrink-0" /> Drive traffic to your most important content.</li>
                     </ul>
-                    <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
+                    <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground" asChild>
+                      <a href="https://studio.wiru.app" target="_blank" rel="noopener noreferrer">
                         Explore Wiru Link <ArrowRight className="ml-2 h-5 w-5" />
+                      </a>
                     </Button>
-                </div>
-                <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
-                     <Image 
-                        src="https://placehold.co/600x450.png" 
-                        alt="Wiru Link Page Example" 
-                        layout="fill" 
-                        objectFit="cover"
-                        data-ai-hint="link bio page"
-                     />
                 </div>
             </div>
         </div>
