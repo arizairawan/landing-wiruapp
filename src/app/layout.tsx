@@ -53,11 +53,11 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/site-logo.png', // Primary favicon, ensure 'public/site-logo.png' exists
-    shortcut: '/site-logo-16x16.png', // Ensure 'public/site-logo-16x16.png' exists
-    apple: '/apple-touch-site-logo.png',  // Ensure 'public/apple-touch-site-logo.png' exists
+    icon: '/wiru-app-logo.png', // Primary favicon using the new logo
+    shortcut: '/wiru-app-logo.png', // For older browsers, can be a different size e.g. 16x16
+    apple: '/wiru-app-logo.png',  // For Apple devices
   },
-  manifest: `${siteUrl}/site.webmanifest`, // Example, ensure this exists and icons within are updated if necessary
+  manifest: `${siteUrl}/site.webmanifest`, 
 };
 
 export default function RootLayout({
@@ -73,7 +73,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet" />
       </head>
-      <body className="font-body antialiased flex flex-col min-h-screen">
+      <body className="font-body antialiased flex flex-col min-h-screen bg-background text-foreground">
         <Header />
         <main className="flex-grow">
           {children}

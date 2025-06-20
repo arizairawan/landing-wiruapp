@@ -1,25 +1,20 @@
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 
 const Header = () => {
   return (
-    <header className="bg-background text-foreground sticky top-0 z-50 border-b">
+    <header className="bg-background/90 text-foreground sticky top-0 z-50 border-b backdrop-blur-sm">
       <div className="container mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group" prefetch={false}>
-          <svg
-            viewBox="0 0 42 32"
-            fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-label="Wiru.app Logo Icon"
-            className="h-8 w-auto text-primary transition-colors group-hover:text-primary/90"
-          >
-            <rect x="2" y="4" width="8" height="24" rx="4" />
-            <rect x="11" y="9" width="8" height="19" rx="4" />
-            <rect x="20" y="4" width="8" height="24" rx="4" />
-            <rect x="30" y="9" width="8" height="19" rx="4" />
-            <rect x="30" y="4" width="8" height="4" rx="2" />
-          </svg>
+          <Image
+            src="/wiru-app-logo.png" 
+            alt="Wiru.app Logo"
+            width={32}
+            height={32}
+            className="transition-opacity group-hover:opacity-90"
+          />
           <span className="font-headline text-2xl font-bold text-primary transition-opacity group-hover:opacity-90">
             Wiru.App
           </span>
