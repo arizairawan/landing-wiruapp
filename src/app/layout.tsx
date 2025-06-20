@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
@@ -52,11 +53,11 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png', // Example, ensure these exist
-    apple: '/apple-touch-icon.png',  // Example, ensure these exist
+    icon: '/site-logo.png', // Primary favicon, ensure 'public/site-logo.png' exists
+    shortcut: '/site-logo-16x16.png', // Ensure 'public/site-logo-16x16.png' exists
+    apple: '/apple-touch-site-logo.png',  // Ensure 'public/apple-touch-site-logo.png' exists
   },
-  manifest: `${siteUrl}/site.webmanifest`, // Example, ensure this exists
+  manifest: `${siteUrl}/site.webmanifest`, // Example, ensure this exists and icons within are updated if necessary
 };
 
 export default function RootLayout({
