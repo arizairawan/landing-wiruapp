@@ -14,7 +14,7 @@ const TemplateCard: React.FC<TemplateCardProps> = ({ template }) => {
   return (
     <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col group">
       <CardHeader className="p-0 relative">
-        <div className="aspect-[3/2] w-full overflow-hidden">
+        <div className="aspect-[4/3] w-full overflow-hidden">
           <Image
             src={template.imageUrl}
             alt={template.name}
@@ -27,7 +27,7 @@ const TemplateCard: React.FC<TemplateCardProps> = ({ template }) => {
       </CardHeader>
       <CardContent className="p-4 flex-grow flex flex-col">
         <CardTitle className="text-lg font-headline mb-2 line-clamp-2">{template.name}</CardTitle>
-        <p className="text-sm text-muted-foreground mb-3 line-clamp-2 flex-grow">{template.description}</p>
+        <p className="text-sm text-muted-foreground mb-3 line-clamp-3 flex-grow">{template.description}</p>
         <div className="flex flex-wrap gap-1 mt-auto mb-3">
           <Badge variant="secondary" className="text-xs">{template.category}</Badge>
           {template.tags.slice(0, 2).map(tag => (

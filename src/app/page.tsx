@@ -12,7 +12,12 @@ import Image from 'next/image';
 
 export default function HomePage() {
   // Display the first 4 templates on the homepage
-  const homePageTemplates = mockTemplates.slice(0, 4);
+  // Ensure all templates on the homepage have gridSpanDesktop = 1 for uniform size
+  const homePageTemplates = mockTemplates.slice(0, 4).map(template => ({
+    ...template,
+    gridSpanDesktop: 1, 
+    gridSpanMobile: 1, // Also ensure mobile span is consistent if needed
+  }));
 
   return (
     <>
@@ -29,7 +34,12 @@ export default function HomePage() {
             <Button size="lg" variant="secondary" className="bg-background/20 hover:bg-background/30 text-primary-foreground" asChild>
               <Link href="/templates">Explore Templates <Rocket className="ml-2 h-5 w-5" /></Link>
             </Button>
-            <Button size="lg" variant="outline" className="text-accent hover:bg-primary-foreground/10 hover:text-white border-primary-foreground/50" asChild>
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="text-accent hover:bg-primary-foreground/10 hover:text-white border-primary-foreground/50" 
+              asChild
+            >
                <a href="#services">Request Service <Wrench className="ml-2 h-5 w-5" /></a>
             </Button>
           </div>
