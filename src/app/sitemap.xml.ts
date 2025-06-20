@@ -18,10 +18,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route === '' ? 1 : (route === '/templates' ? 0.9 : 0.8),
   }));
 
-  // If you had dynamic routes, for example for individual template preview pages, you would add them here.
-  // Example:
+  // Jika Anda memiliki rute dinamis, misalnya untuk halaman pratinjau template individual, Anda akan menambahkannya di sini.
+  // Contoh:
+  // import { mockTemplates } from '@/data/templates'; // Pastikan path ini benar
   // const templatePreviews = mockTemplates.map((template) => ({
-  //   url: `${siteUrl}/preview/${template.id}`,
+  //   url: `${siteUrl}/preview/${template.id}`, // Sesuaikan dengan struktur URL pratinjau Anda
   //   lastModified: new Date(),
   //   changeFrequency: 'monthly',
   //   priority: 0.7,
@@ -30,3 +31,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return sitemapEntries;
 }
+
