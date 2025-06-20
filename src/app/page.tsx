@@ -9,7 +9,6 @@ import TemplateGrid from '@/components/templates/TemplateGrid';
 import { Button } from '@/components/ui/button';
 import { Rocket, Wrench, CheckCircle, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
-import AiRecommendationSection from '@/components/ai/AiRecommendationSection';
 
 export default function HomePage() {
   // Display the first 4 templates on the homepage
@@ -30,14 +29,12 @@ export default function HomePage() {
             <Button size="lg" variant="secondary" className="bg-background/20 hover:bg-background/30 text-primary-foreground" asChild>
               <Link href="/templates">Explore Templates <Rocket className="ml-2 h-5 w-5" /></Link>
             </Button>
-            <Button size="lg" variant="outline" className="text-purple-400 hover:bg-primary-foreground/10 hover:text-white border-primary-foreground/50" asChild>
+            <Button size="lg" variant="outline" className="text-accent hover:bg-primary-foreground/10 hover:text-white border-primary-foreground/50" asChild>
                <a href="#services">Request Service <Wrench className="ml-2 h-5 w-5" /></a>
             </Button>
           </div>
         </div>
       </section>
-
-      <AiRecommendationSection />
 
       <section id="templates" className="py-12 md:py-16 lg:py-20">
         <div className="container mx-auto px-4 md:px-6">
