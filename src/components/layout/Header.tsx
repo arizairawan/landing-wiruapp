@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 
 const Header = () => {
   return (
-    <header className="bg-card text-card-foreground shadow-sm sticky top-0 z-50">
+    <header className="bg-card/90 text-card-foreground shadow-sm sticky top-0 z-50 backdrop-blur-sm">
       <div className="container mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group" prefetch={false}>
           <svg
