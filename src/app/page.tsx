@@ -39,7 +39,7 @@ export default function HomePage() {
             <Button 
               size="lg" 
               variant="outline"
-              className="text-accent hover:text-accent-foreground border-accent hover:bg-accent" // Updated to use accent for consistency
+              className="border-accent text-accent hover:text-accent-foreground hover:bg-accent"
               asChild
             >
                <a href="#services">Request Service <Wrench className="ml-2 h-5 w-5" /></a>
@@ -86,14 +86,48 @@ export default function HomePage() {
                         Get a Free Quote <Wrench className="ml-2 h-5 w-5" />
                     </Button>
                 </div>
-                <div className="relative aspect-[4/3] rounded-lg overflow-hidden border order-first md:order-last">
+                <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
                      <Image src="https://placehold.co/600x450.png" alt="Custom Development Services" layout="fill" objectFit="cover" data-ai-hint="team meeting"/>
                 </div>
             </div>
         </div>
       </section>
 
-      <section id="about" className="py-12 md:py-16 lg:py-20 bg-secondary text-secondary-foreground">
+      <section id="wiru-link" className="py-12 md:py-16 lg:py-20 bg-secondary">
+        <div className="container mx-auto px-4 md:px-6">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 className="text-3xl font-headline font-semibold text-primary mb-6">
+                      Introducing Wiru Link: Your All-in-One Link Page
+                    </h2>
+                    <p className="text-muted-foreground mb-6 text-lg">
+                      Create a beautiful and personalized page to showcase everything you are and everything you do.
+                      Share your bio, social media profiles, online store, latest projects, and more – all with a single link.
+                    </p>
+                    <ul className="space-y-3 text-muted-foreground mb-8">
+                        <li className="flex items-center"><CheckCircle className="h-5 w-5 text-accent mr-3 flex-shrink-0" /> Easy to customize and manage.</li>
+                        <li className="flex items-center"><CheckCircle className="h-5 w-5 text-accent mr-3 flex-shrink-0" /> Share all your important links in one place.</li>
+                        <li className="flex items-center"><CheckCircle className="h-5 w-5 text-accent mr-3 flex-shrink-0" /> Perfect for creators, entrepreneurs, and businesses.</li>
+                        <li className="flex items-center"><CheckCircle className="h-5 w-5 text-accent mr-3 flex-shrink-0" /> Drive traffic to your most important content.</li>
+                    </ul>
+                    <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
+                        Explore Wiru Link <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                </div>
+                <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
+                     <Image 
+                        src="https://placehold.co/600x450.png" 
+                        alt="Wiru Link Page Example" 
+                        layout="fill" 
+                        objectFit="cover"
+                        data-ai-hint="link bio page"
+                     />
+                </div>
+            </div>
+        </div>
+      </section>
+
+      <section id="about" className="py-12 md:py-16 lg:py-20 bg-background text-foreground">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <h2 className="text-3xl font-headline font-semibold text-primary mb-4">About Wiru.app</h2>
           <p className="max-w-3xl mx-auto text-lg">
