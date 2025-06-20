@@ -9,34 +9,34 @@ const Header = () => {
       <div className="container mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group" prefetch={false}>
           <Image
-            src="/wiru-app-logo.png" 
+            src="/wiru-app-logo.png"
             alt="Wiru.app Logo"
             width={32}
             height={32}
             className="transition-opacity group-hover:opacity-90"
           />
-          <span className="font-headline text-2xl font-bold text-primary transition-opacity group-hover:opacity-90">
+          <span className="font-headline text-2xl font-bold text-foreground transition-opacity group-hover:opacity-90">
             Wiru.App
           </span>
         </Link>
         <nav className="hidden md:flex items-center gap-1 lg:gap-2">
-          <Link 
-            href="/templates" 
-            className="text-sm font-medium hover:text-primary hover:bg-primary/5 text-foreground/80 transition-all px-3 py-2 rounded-md" 
+          <Link
+            href="/#templates"
+            className="text-sm font-medium hover:text-primary hover:bg-primary/5 text-foreground/80 transition-all px-3 py-2 rounded-md"
             prefetch={false}
           >
             Templates
           </Link>
-          <Link 
-            href="/#services" 
-            className="text-sm font-medium hover:text-primary hover:bg-primary/5 text-foreground/80 transition-all px-3 py-2 rounded-md" 
+          <Link
+            href="/#services"
+            className="text-sm font-medium hover:text-primary hover:bg-primary/5 text-foreground/80 transition-all px-3 py-2 rounded-md"
             prefetch={false}
           >
             Services
           </Link>
-          <Link 
-            href="/#about" 
-            className="text-sm font-medium hover:text-primary hover:bg-primary/5 text-foreground/80 transition-all px-3 py-2 rounded-md" 
+          <Link
+            href="/#about"
+            className="text-sm font-medium hover:text-primary hover:bg-primary/5 text-foreground/80 transition-all px-3 py-2 rounded-md"
             prefetch={false}
           >
             About
