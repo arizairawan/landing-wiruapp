@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
@@ -24,13 +25,13 @@ const Header = () => {
           </span>
         </Link>
         <nav className="hidden md:flex items-center gap-4 lg:gap-6">
-          <Link href="#templates" className="text-sm font-medium hover:text-primary transition-colors" prefetch={false}>
+          <Link href="/templates" className="text-sm font-medium hover:text-primary transition-colors" prefetch={false}>
             Templates
           </Link>
-          <Link href="#services" className="text-sm font-medium hover:text-primary transition-colors" prefetch={false}>
+          <Link href="/#services" className="text-sm font-medium hover:text-primary transition-colors" prefetch={false}>
             Services
           </Link>
-          <Link href="#about" className="text-sm font-medium hover:text-primary transition-colors" prefetch={false}>
+          <Link href="/#about" className="text-sm font-medium hover:text-primary transition-colors" prefetch={false}>
             About
           </Link>
         </nav>

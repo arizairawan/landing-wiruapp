@@ -1,12 +1,14 @@
+
 "use client"; 
 
 import { useState, useEffect, useCallback } from 'react';
+import Link from 'next/link';
 import type { Template, Category, Technology } from '@/data/templates';
 import { mockTemplates } from '@/data/templates';
 import TemplateGrid from '@/components/templates/TemplateGrid';
 import TemplateFilter from '@/components/templates/TemplateFilter';
 import { Button } from '@/components/ui/button';
-import { Rocket, Wrench, CheckCircle } from 'lucide-react';
+import { Rocket, Wrench, CheckCircle, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 
 export default function HomePage() {
@@ -52,9 +54,9 @@ export default function HomePage() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button size="lg" variant="secondary" className="bg-background/20 hover:bg-background/30 text-primary-foreground" asChild>
-              <a href="#templates">Explore Templates <Rocket className="ml-2 h-5 w-5" /></a>
+              <Link href="/templates">Explore Templates <Rocket className="ml-2 h-5 w-5" /></Link>
             </Button>
-            <Button size="lg" variant="outline" className="text-accent-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground border-primary-foreground/50" asChild>
+            <Button size="lg" variant="outline" className="text-purple-400 hover:bg-primary-foreground/10 hover:text-white border-primary-foreground/50" asChild>
                <a href="#services">Request Service <Wrench className="ml-2 h-5 w-5" /></a>
             </Button>
           </div>
@@ -68,7 +70,16 @@ export default function HomePage() {
             Find the perfect starting point for your next project. High-quality, customizable templates ready for you.
           </p>
           <TemplateFilter onFilterChange={handleFilterChange} />
-          <TemplateGrid templates={filteredTemplates} />
+          <TemplateGrid templates={filteredTemplates.slice(0, 4)} />
+          {filteredTemplates.length > 4 && (
+            <div className="text-center mt-12">
+              <Button size="lg" variant="outline" asChild className="text-primary hover:bg-primary/10 hover:text-primary border-primary">
+                <Link href="/templates">
+                  See More Templates <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+            </div>
+          )}
         </div>
       </section>
       

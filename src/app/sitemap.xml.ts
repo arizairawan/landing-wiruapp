@@ -6,7 +6,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://wiru.app';
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     '', // Homepage
-    '/#templates',
+    '/templates', // All templates page
     '/#services',
     '/#about',
   ];
@@ -14,8 +14,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const sitemapEntries: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
     url: `${siteUrl}${route}`,
     lastModified: new Date(),
-    changeFrequency: 'weekly', // Or 'monthly', 'yearly' depending on how often content changes
-    priority: route === '' ? 1 : 0.8, // Homepage usually gets highest priority
+    changeFrequency: 'weekly', 
+    priority: route === '' ? 1 : (route === '/templates' ? 0.9 : 0.8),
   }));
 
   // If you had dynamic routes, for example for individual template preview pages, you would add them here.
