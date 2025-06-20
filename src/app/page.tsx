@@ -21,8 +21,12 @@ export default function HomePage() {
     <>
       <section className="py-16 md:py-24 lg:py-32 bg-background text-center">
         <div className="container mx-auto px-4 md:px-6">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-headline font-bold text-primary mb-6">
-            Your Marketplace for Web & App Solutions
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-headline font-bold text-foreground mb-6">
+            Your Marketplace for{' '}
+            <span className="bg-gradient-to-r from-primary to-accent text-transparent bg-clip-text">
+              Web & App
+            </span>
+            {' '}Solutions
           </h1>
           <p className="text-lg md:text-xl text-foreground/90 mb-8 max-w-3xl mx-auto">
             Discover high-quality website and application templates, or let our experts build your vision from scratch.
@@ -35,7 +39,7 @@ export default function HomePage() {
             <Button 
               size="lg" 
               variant="outline"
-              className="text-accent-foreground hover:text-accent-foreground"
+              className="text-accent hover:text-accent-foreground border-accent hover:bg-accent" // Updated to use accent for consistency
               asChild
             >
                <a href="#services">Request Service <Wrench className="ml-2 h-5 w-5" /></a>
