@@ -87,7 +87,7 @@ export default function HomePage() {
                     </Button>
                 </div>
                 <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
-                     <Image src="https://placehold.co/600x450.png" alt="Custom Development Services" layout="fill" objectFit="cover" data-ai-hint="team meeting"/>
+                     <Image src="https://placehold.co/600x450.png" alt="Custom Development Services" fill className="object-cover" data-ai-hint="team meeting"/>
                 </div>
             </div>
         </div>
@@ -100,8 +100,8 @@ export default function HomePage() {
                      <Image 
                         src="https://placehold.co/600x450.png" 
                         alt="Wiru Link Page Example" 
-                        layout="fill" 
-                        objectFit="cover"
+                        fill 
+                        className="object-cover"
                         data-ai-hint="link bio page"
                      />
                 </div>

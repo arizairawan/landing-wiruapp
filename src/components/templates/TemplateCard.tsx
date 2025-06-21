@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Template } from '@/data/templates';
@@ -12,15 +13,14 @@ interface TemplateCardProps {
 
 const TemplateCard: React.FC<TemplateCardProps> = ({ template }) => {
   return (
-    <Card className="overflow-hidden h-full flex flex-col group border">
+    <Card className="overflow-hidden h-full flex flex-col group">
       <CardHeader className="p-0 relative">
         <div className="aspect-[4/3] w-full overflow-hidden">
           <Image
             src={template.imageUrl}
             alt={template.name}
-            layout="fill"
-            objectFit="cover"
-            className="transition-transform duration-300 group-hover:scale-105"
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
             data-ai-hint={template.dataAiHint}
           />
         </div>
