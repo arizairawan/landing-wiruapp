@@ -50,7 +50,7 @@ export default function HomePage() {
 
       <section id="templates" className="py-12 md:py-16 lg:py-20 bg-secondary">
         <div className="container mx-auto px-4 md:px-6">
-          <h2 className="text-3xl font-headline font-semibold text-center mb-4 text-primary">Explore Our Templates</h2>
+          <h2 className="text-3xl font-headline font-semibold text-center text-primary">Explore Our Templates</h2>
           <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
             Find the perfect starting point for your next project. High-quality, customizable templates ready for you.
           </p>
@@ -87,7 +87,7 @@ export default function HomePage() {
                     </Button>
                 </div>
                 <div className="relative aspect-square rounded-lg overflow-hidden">
-                     <Image src="https://placehold.co/600x450.png" alt="Custom Development Services" fill className="object-cover" data-ai-hint="team meeting"/>
+                     <Image src="/custom-development-services.png" alt="Custom Development Services Illustration" fill className="object-contain"/>
                 </div>
             </div>
         </div>
