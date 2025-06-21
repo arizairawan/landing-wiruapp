@@ -1,43 +1,27 @@
 
 "use client";
 
-import { useState, useEffect, useCallback } from 'react';
-import type { Template, Category, Technology } from '@/data/templates';
-import { mockTemplates } from '@/data/templates';
+import { useState, useEffect } from 'react';
+import type { Template, Category } from '@/data/templates';
+import { mockTemplates, categories } from '@/data/templates';
 import TemplateGrid from '@/components/templates/TemplateGrid';
-import TemplateFilter from '@/components/templates/TemplateFilter';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 export default function AllTemplatesPage() {
   const [filteredTemplates, setFilteredTemplates] = useState<Template[]>(mockTemplates);
-
-  const handleFilterChange = useCallback((filters: { searchTerm: string; category: Category; technology: Technology }) => {
-    let tempTemplates = mockTemplates;
-
-    if (filters.searchTerm) {
-      const searchTermLower = filters.searchTerm.toLowerCase();
-      tempTemplates = tempTemplates.filter(template =>
-        template.name.toLowerCase().includes(searchTermLower) ||
-        template.description.toLowerCase().includes(searchTermLower) ||
-        template.tags.some(tag => tag.toLowerCase().includes(searchTermLower))
-      );
-    }
-
-    if (filters.category !== 'All') {
-      tempTemplates = tempTemplates.filter(template => template.category === filters.category);
-    }
-
-    if (filters.technology !== 'All') {
-      tempTemplates = tempTemplates.filter(template => template.tags.includes(filters.technology) || template.tags.includes(filters.technology.replace(/\s/g, '')));
-    }
-
-    setFilteredTemplates(tempTemplates);
-  }, []);
+  const [selectedCategory, setSelectedCategory] = useState<Category>('All');
 
   useEffect(() => {
-    handleFilterChange({ searchTerm: '', category: 'All', technology: 'All' });
-  }, [handleFilterChange]);
+    if (selectedCategory === 'All') {
+      setFilteredTemplates(mockTemplates);
+    } else {
+      const tempTemplates = mockTemplates.filter(template => template.category === selectedCategory);
+      setFilteredTemplates(tempTemplates);
+    }
+  }, [selectedCategory]);
 
   return (
     <section className="py-12 md:py-16 lg:py-20">
@@ -59,7 +43,23 @@ export default function AllTemplatesPage() {
         <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
           Browse our full collection of high-quality, customizable templates. Find the perfect foundation for your next project.
         </p>
-        <TemplateFilter onFilterChange={handleFilterChange} />
+        
+        <div className="flex justify-center flex-wrap gap-2 mb-10">
+          {categories.map((category) => (
+            <Button
+              key={category}
+              variant={selectedCategory === category ? 'default' : 'outline'}
+              className={cn(
+                "rounded-full",
+                selectedCategory !== category && "border-primary text-primary hover:bg-primary/10 hover:text-primary"
+              )}
+              onClick={() => setSelectedCategory(category)}
+            >
+              {category}
+            </Button>
+          ))}
+        </div>
+
         <TemplateGrid templates={filteredTemplates} />
       </div>
     </section>
