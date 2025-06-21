@@ -7,7 +7,7 @@ import type { Template } from '@/data/templates';
 import { mockTemplates } from '@/data/templates';
 import TemplateGrid from '@/components/templates/TemplateGrid';
 import { Button } from '@/components/ui/button';
-import { Rocket, Wrench, CheckCircle, ArrowRight } from 'lucide-react';
+import { Rocket, Wrench, CheckCircle, ArrowRight, Instagram, Linkedin, Mail } from 'lucide-react';
 import Image from 'next/image';
 
 export default function HomePage() {
@@ -132,10 +132,24 @@ export default function HomePage() {
       <section id="about" className="py-12 md:py-16 lg:py-20 bg-background text-foreground">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <h2 className="text-3xl font-headline font-semibold text-primary mb-4">About Wiru.app</h2>
-          <p className="max-w-3xl mx-auto text-lg">
+          <p className="max-w-3xl mx-auto text-lg text-muted-foreground">
             Wiru.app is dedicated to empowering developers and entrepreneurs by providing high-quality digital assets and development services. 
             Our mission is to accelerate your journey from idea to launch with reliable, beautiful, and functional solutions. We believe in quality code and exceptional service.
           </p>
+          <div className="mt-8 flex justify-center items-center gap-6">
+            <a href="https://www.instagram.com/wiru.app" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+              <Instagram className="h-7 w-7" />
+              <span className="sr-only">Instagram</span>
+            </a>
+            <a href="https://www.linkedin.com/company/wiruapp" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+              <Linkedin className="h-7 w-7" />
+              <span className="sr-only">LinkedIn</span>
+            </a>
+            <a href="mailto:aplikasiwiru@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+              <Mail className="h-7 w-7" />
+              <span className="sr-only">Email</span>
+            </a>
+          </div>
         </div>
       </section>
     </>
