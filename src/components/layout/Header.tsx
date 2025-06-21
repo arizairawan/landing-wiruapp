@@ -51,8 +51,8 @@ const Header = () => {
         </nav>
         <div className="flex items-center gap-2">
           <Button size="sm" className="bg-accent hover:bg-accent/90 text-accent-foreground" asChild>
-            <a href="https://studio.wiru.app" target="_blank" rel="noopener noreferrer">
-              Sign Up
+            <a href="mailto:aplikasiwiru@gmail.com">
+              Contact Us
             </a>
           </Button>
         </div>
