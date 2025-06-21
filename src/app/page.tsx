@@ -86,7 +86,7 @@ export default function HomePage() {
                         Get a Free Quote <Wrench className="ml-2 h-5 w-5" />
                     </Button>
                 </div>
-                <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
+                <div className="relative aspect-square rounded-lg overflow-hidden">
                      <Image src="https://placehold.co/600x450.png" alt="Custom Development Services" fill className="object-cover" data-ai-hint="team meeting"/>
                 </div>
             </div>
@@ -96,13 +96,13 @@ export default function HomePage() {
       <section id="wiru-link" className="py-12 md:py-16 lg:py-20 bg-secondary">
         <div className="container mx-auto px-4 md:px-6">
             <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
+                <div className="relative aspect-square rounded-lg overflow-hidden">
                      <Image 
-                        src="https://placehold.co/600x450.png" 
-                        alt="Wiru Link Page Example" 
+                        src="/wiru-link-showcase.png" 
+                        alt="Wiru Link product showcase on a smartphone" 
                         fill 
-                        className="object-cover"
-                        data-ai-hint="link bio page"
+                        className="object-contain"
+                        data-ai-hint="mobile mockup"
                      />
                 </div>
                 <div>
