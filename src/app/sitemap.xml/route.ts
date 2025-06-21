@@ -9,9 +9,8 @@ export async function GET(request: NextRequest) {
   const staticPages = [
     { path: '/', priority: '1.0', changefreq: 'daily' },
     { path: '/templates', priority: '0.9', changefreq: 'weekly' },
-    // Add other static pages if needed.
-    // For dynamic pages (e.g., individual template pages), you would fetch them
-    // from your data source and map them here.
+    { path: '/privacy-policy', priority: '0.3', changefreq: 'monthly' },
+    { path: '/terms-of-service', priority: '0.3', changefreq: 'monthly' },
   ];
 
   const sitemapContent = staticPages
