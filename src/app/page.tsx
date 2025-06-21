@@ -82,8 +82,10 @@ export default function HomePage() {
                         <li className="flex items-center"><CheckCircle className="h-5 w-5 text-accent mr-3 flex-shrink-0" /> Template Customization & Integration</li>
                         <li className="flex items-center"><CheckCircle className="h-5 w-5 text-accent mr-3 flex-shrink-0" /> Ongoing Support & Maintenance</li>
                     </ul>
-                    <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
-                        Get a Free Quote <Wrench className="ml-2 h-5 w-5" />
+                    <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground" asChild>
+                      <a href="mailto:aplikasiwiru@gmail.com">
+                        Let's Build Your Idea <Wrench className="ml-2 h-5 w-5" />
+                      </a>
                     </Button>
                 </div>
                 <div className="relative aspect-square rounded-lg overflow-hidden">
