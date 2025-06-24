@@ -9,6 +9,7 @@ import TemplateGrid from '@/components/templates/TemplateGrid';
 import { Button } from '@/components/ui/button';
 import { Rocket, Wrench, CheckCircle, ArrowRight, Instagram, Linkedin, Mail } from 'lucide-react';
 import Image from 'next/image';
+import ClientMarquee from '@/components/layout/ClientMarquee';
 
 export default function HomePage() {
   const homePageTemplates = mockTemplates.slice(0, 4).map(template => ({
@@ -98,7 +99,7 @@ export default function HomePage() {
       <section id="wiru-link" className="py-12 md:py-16 lg:py-20 bg-secondary">
         <div className="container mx-auto px-4 md:px-6">
             <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="relative aspect-square rounded-lg overflow-hidden">
+                <div className="relative aspect-video rounded-lg overflow-hidden md:order-last">
                      <Image 
                         src="/wiru-link-showcase.png" 
                         alt="Wiru Link product showcase on a smartphone" 
@@ -128,6 +129,18 @@ export default function HomePage() {
                     </Button>
                 </div>
             </div>
+        </div>
+      </section>
+
+      <section id="clients" className="py-12 md:py-16 lg:py-20 bg-secondary">
+        <div className="container mx-auto px-4 md:px-6">
+          <h2 className="text-3xl font-headline font-semibold text-center text-primary mb-4">
+            Trusted by Leading Companies & Startups
+          </h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            We are proud to have collaborated with a diverse range of clients to bring their digital visions to life.
+          </p>
+          <ClientMarquee />
         </div>
       </section>
 
