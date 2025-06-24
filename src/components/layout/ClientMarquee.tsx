@@ -1,3 +1,5 @@
+"use client";
+
 import Image from 'next/image';
 import { clients } from '@/data/clients';
 import { Card, CardContent } from '@/components/ui/card';
