@@ -10,7 +10,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://wiru.app'; // Fallb
 export const metadata: Metadata = {
   title: 'Wiru.app: Your Marketplace for Web & App Solutions',
   description: 'Purchase website/application source code or request development services. Discover high-quality templates or get custom solutions.',
-  keywords: ['web templates', 'app source code', 'development services', 'NextJS templates', 'React templates', 'Wiru.app', 'Marketplace', 'Web Solutions', 'App Solutions'],
+  keywords: ['web templates', 'app source code', 'development services', 'NextJS templates', 'React templates', 'Wiru.app', 'Marketplace', 'Web Solutions', 'App Solutions', 'flutter', 'angular', 'bootstrap', 'tailwind'],
   authors: [{ name: 'Wiru.app Team', url: siteUrl }],
   creator: 'Wiru.app Team',
   publisher: 'Wiru.app',
