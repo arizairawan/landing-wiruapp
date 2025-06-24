@@ -111,7 +111,7 @@ export default function HomePage() {
       <section id="wiru-link" className="py-12 md:py-16 lg:py-20 bg-background">
         <div className="container mx-auto px-4 md:px-6">
             <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="relative aspect-video rounded-lg overflow-hidden md:order-last">
+                <div className="relative aspect-video rounded-lg overflow-hidden">
                      <Image 
                         src="/wiru-link-showcase.png" 
                         alt="Wiru Link product showcase on a smartphone" 
