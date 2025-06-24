@@ -11,17 +11,19 @@ const ClientMarquee = () => {
     <div className="relative w-full overflow-hidden group">
       <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused]">
         {extendedClients.map((client, index) => (
-          <Card key={index} className="mx-4 flex-shrink-0" style={{ width: '350px' }}>
-            <CardContent className="p-6 flex flex-col items-center justify-center h-full">
-              <div className="relative h-20 w-full mb-4">
+          <Card key={index} className="mx-4 flex-shrink-0 overflow-hidden" style={{ width: '350px', height: '200px' }}>
+            <CardContent className="p-0 flex flex-col h-full">
+              <div className="relative w-full flex-grow">
                 <Image
                   src={client.image}
                   alt={client.name}
                   fill
-                  className="object-contain"
+                  className="object-contain p-6"
                 />
               </div>
-              <p className="text-center font-medium text-foreground text-sm">{client.name}</p>
+              <div className="w-full p-4 border-t shrink-0">
+                <p className="text-center font-medium text-foreground text-sm truncate">{client.name}</p>
+              </div>
             </CardContent>
           </Card>
         ))}
