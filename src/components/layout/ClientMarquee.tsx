@@ -18,7 +18,7 @@ const ClientMarquee = () => {
                   src={client.image}
                   alt={client.name}
                   fill
-                  className="object-contain p-6"
+                  className="object-contain"
                 />
               </div>
               <div className="w-full p-4 border-t shrink-0">
