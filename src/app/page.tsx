@@ -96,7 +96,19 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="wiru-link" className="py-12 md:py-16 lg:py-20 bg-secondary">
+      <section id="clients" className="py-12 md:py-16 lg:py-20 bg-secondary">
+        <div className="container mx-auto px-4 md:px-6">
+          <h2 className="text-3xl font-headline font-semibold text-center text-primary mb-4">
+            Trusted by Leading Companies & Startups
+          </h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            We are proud to have collaborated with a diverse range of clients to bring their digital visions to life.
+          </p>
+          <ClientMarquee />
+        </div>
+      </section>
+
+      <section id="wiru-link" className="py-12 md:py-16 lg:py-20 bg-background">
         <div className="container mx-auto px-4 md:px-6">
             <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div className="relative aspect-video rounded-lg overflow-hidden md:order-last">
@@ -132,19 +144,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="clients" className="py-12 md:py-16 lg:py-20 bg-secondary">
-        <div className="container mx-auto px-4 md:px-6">
-          <h2 className="text-3xl font-headline font-semibold text-center text-primary mb-4">
-            Trusted by Leading Companies & Startups
-          </h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-            We are proud to have collaborated with a diverse range of clients to bring their digital visions to life.
-          </p>
-          <ClientMarquee />
-        </div>
-      </section>
-
-      <section id="about" className="py-12 md:py-16 lg:py-20 bg-background text-foreground">
+      <section id="about" className="py-12 md:py-16 lg:py-20 bg-secondary text-foreground">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <h2 className="text-3xl font-headline font-semibold text-primary mb-4">About Wiru.app</h2>
           <p className="max-w-3xl mx-auto text-lg text-muted-foreground">
