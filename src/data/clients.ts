@@ -25,6 +25,10 @@ export const clients: Client[] = [
       image: 'https://link.wiru.app/assets/acara-id.png'
     },
     {
+      name: 'Tata Kreasindo Jaya',
+      image: 'https://link.wiru.app/assets/tatakreasindo.png'
+    },
+    {
       name: 'App Tracker - Trucks & Excavator',
       image: 'https://link.wiru.app/assets/trucks-and-excavators.png'
     },
