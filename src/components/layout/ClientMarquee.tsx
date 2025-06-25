@@ -9,7 +9,7 @@ const ClientMarquee = () => {
 
   return (
     <div className="relative w-full overflow-hidden group">
-      <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused]">
+      <div className="flex animate-marquee group-hover:[animation-play-state:paused]">
         {extendedClients.map((client, index) => (
           <Card key={index} className="mx-4 flex-shrink-0 overflow-hidden" style={{ width: '280px', height: '200px' }}>
             <CardContent className="p-0 flex flex-col h-full">
