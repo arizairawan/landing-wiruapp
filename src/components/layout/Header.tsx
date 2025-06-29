@@ -1,14 +1,15 @@
 
 'use client'; // Required for Sheet component and hooks
 
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
-  SheetClose,
   SheetHeader,
   SheetTitle,
   SheetDescription,
@@ -16,6 +17,9 @@ import {
 import { Menu, Rocket, Wrench, Newspaper, Users, Link2, Info } from 'lucide-react';
 
 const Header = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
   const navLinks = [
     { href: "/#templates", label: "Templates", icon: Rocket, prefetch: false },
     { href: "/#services", label: "Services", icon: Wrench, prefetch: false },
@@ -24,6 +28,28 @@ const Header = () => {
     { href: "/#wiru-link", label: "Link", icon: Link2, prefetch: false },
     { href: "/#about", label: "About", icon: Info, prefetch: false },
   ];
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // If it's a hash link and we are on the homepage, handle scroll manually
+    if (href.startsWith('/#') && pathname === '/') {
+      e.preventDefault();
+      setIsMobileMenuOpen(false);
+      
+      // Allow the sheet to start closing before scrolling
+      setTimeout(() => {
+        const targetId = href.substring(2); // remove '/#'
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 150);
+    } else {
+      // For other links (/blog) or hash links from other pages,
+      // just close the menu and let Next's Link handle the navigation.
+      setIsMobileMenuOpen(false);
+    }
+  };
+
 
   return (
     <header className="bg-background/90 text-foreground sticky top-0 z-50 border-b backdrop-blur-sm">
@@ -65,7 +91,7 @@ const Header = () => {
           
           {/* Mobile Menu */}
           <div className="md:hidden">
-            <Sheet>
+            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon">
                   <Menu className="h-5 w-5" />
@@ -78,41 +104,37 @@ const Header = () => {
                   <SheetDescription>Main navigation links for the Wiru.app website.</SheetDescription>
                 </SheetHeader>
                 <div className="flex flex-col gap-4 py-6 h-full">
-                  <SheetClose asChild>
-                    <Link href="/" className="flex items-center gap-2 mb-4">
-                      <Image
-                          src="/wiru-app-logo.png"
-                          alt="Wiru.app Logo"
-                          width={32}
-                          height={32}
-                        />
-                        <span className="font-headline text-2xl font-bold">
-                          Wiru.App
-                        </span>
-                    </Link>
-                  </SheetClose>
+                  <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2 mb-4">
+                    <Image
+                        src="/wiru-app-logo.png"
+                        alt="Wiru.app Logo"
+                        width={32}
+                        height={32}
+                      />
+                      <span className="font-headline text-2xl font-bold">
+                        Wiru.App
+                      </span>
+                  </Link>
                   <nav className="flex flex-col gap-2 flex-grow">
                     {navLinks.map((link) => (
-                      <SheetClose asChild key={link.href}>
-                        <Link
-                          href={link.href}
-                          className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary hover:bg-primary/5"
-                          prefetch={link.prefetch}
-                        >
-                          <link.icon className="h-5 w-5" />
-                          {link.label}
-                        </Link>
-                      </SheetClose>
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={(e) => handleNavClick(e, link.href)}
+                        className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary hover:bg-primary/5"
+                        prefetch={link.prefetch}
+                      >
+                        <link.icon className="h-5 w-5" />
+                        {link.label}
+                      </Link>
                     ))}
                   </nav>
                   <div className="mt-auto">
-                     <SheetClose asChild>
-                        <Button size="lg" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" asChild>
-                            <a href="mailto:aplikasiwiru@gmail.com">
-                              Contact Us
-                            </a>
-                        </Button>
-                     </SheetClose>
+                    <Button size="lg" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" asChild>
+                        <a href="mailto:aplikasiwiru@gmail.com" onClick={() => setIsMobileMenuOpen(false)}>
+                          Contact Us
+                        </a>
+                    </Button>
                   </div>
                 </div>
               </SheetContent>
