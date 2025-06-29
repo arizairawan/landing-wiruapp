@@ -1,6 +1,6 @@
 
 import { type NextRequest } from 'next/server';
-import { mockBlogs } from '@/data/blogs';
+import { getAllBlogsForSitemap } from '@/services/blogService';
 
 export async function GET(request: NextRequest) {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://wiru.app';
@@ -28,7 +28,8 @@ export async function GET(request: NextRequest) {
     })
     .join('');
 
-  const blogUrls = mockBlogs
+  const blogs = await getAllBlogsForSitemap();
+  const blogUrls = blogs
     .map((blog) => {
       return `
   <url>

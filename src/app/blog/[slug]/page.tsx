@@ -3,7 +3,7 @@ import type { Metadata, ResolvingMetadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { mockBlogs } from '@/data/blogs';
+import { getBlogBySlug, getAllBlogSlugs } from '@/services/blogService';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 
 type Props = {
@@ -16,7 +16,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const slug = params.slug;
-  const blog = mockBlogs.find((p) => p.slug === slug);
+  const blog = await getBlogBySlug(slug);
 
   if (!blog) {
     return {
@@ -67,13 +67,12 @@ export async function generateMetadata(
 
 // This function generates the static paths for all blogs at build time
 export async function generateStaticParams() {
-  return mockBlogs.map((blog) => ({
-    slug: blog.slug,
-  }));
+  const slugs = await getAllBlogSlugs();
+  return slugs;
 }
 
-export default function BlogDetailPage({ params }: Props) {
-  const blog = mockBlogs.find((p) => p.slug === params.slug);
+export default async function BlogDetailPage({ params }: Props) {
+  const blog = await getBlogBySlug(params.slug);
 
   if (!blog) {
     notFound();
