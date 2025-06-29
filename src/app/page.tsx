@@ -1,4 +1,3 @@
-
 "use client"; 
 
 import { useState, useEffect } from 'react';
@@ -105,13 +104,20 @@ export default function HomePage() {
             We are proud to have collaborated with a diverse range of clients to bring their digital visions to life.
           </p>
           <ClientMarquee />
+          <div className="text-center mt-12">
+            <Button size="lg" variant="outline" asChild className="text-primary hover:bg-primary/10 hover:text-primary border-primary">
+              <Link href="/clients">
+                See All Clients <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
 
       <section id="wiru-link" className="py-12 md:py-16 lg:py-20 bg-background">
         <div className="container mx-auto px-4 md:px-6">
             <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="relative aspect-video rounded-lg overflow-hidden">
+                <div className="relative aspect-video rounded-lg overflow-hidden order-last md:order-first">
                      <Image 
                         src="/wiru-link-showcase.png" 
                         alt="Wiru Link product showcase on a smartphone" 
