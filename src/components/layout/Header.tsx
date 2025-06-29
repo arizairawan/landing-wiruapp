@@ -30,10 +30,10 @@ const Header = () => {
   ];
 
   const handleMobileLinkClick = () => {
-    // Close the menu after a 2-second delay
+    // Close the menu after a 1.5-second delay
     setTimeout(() => {
       setIsMobileMenuOpen(false);
-    }, 2000);
+    }, 1500);
   };
 
   return (
