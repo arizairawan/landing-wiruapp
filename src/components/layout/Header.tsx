@@ -29,30 +29,6 @@ const Header = () => {
     { href: "/#about", label: "About", icon: Info, prefetch: false },
   ];
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    // For same-page hash links, we handle scrolling manually to ensure reliability on mobile.
-    if (href.startsWith('/#') && pathname === '/') {
-      e.preventDefault(); // Stop the default link behavior
-
-      const targetId = href.substring(2); // e.g., 'services'
-      const element = document.getElementById(targetId);
-      
-      if (element) {
-        // Instantly jump to the section. This is more reliable than smooth scrolling
-        // which can conflict with the menu closing animation.
-        element.scrollIntoView();
-      }
-
-      // Close the menu after handling the scroll.
-      setIsMobileMenuOpen(false);
-    } else {
-      // For other links (like to /blog) or hash links from other pages,
-      // just close the menu and let Next's Link component handle navigation.
-      setIsMobileMenuOpen(false);
-    }
-  };
-
-
   return (
     <header className="bg-background/90 text-foreground sticky top-0 z-50 border-b backdrop-blur-sm">
       <div className="container mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
@@ -106,7 +82,7 @@ const Header = () => {
                   <SheetDescription>Main navigation links for the Wiru.app website.</SheetDescription>
                 </SheetHeader>
                 <div className="flex flex-col gap-4 py-6 h-full">
-                  <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2 mb-4">
+                  <Link href="/" className="flex items-center gap-2 mb-4">
                     <Image
                         src="/wiru-app-logo.png"
                         alt="Wiru.app Logo"
@@ -122,7 +98,13 @@ const Header = () => {
                       <Link
                         key={link.href}
                         href={link.href}
-                        onClick={(e) => handleNavClick(e, link.href)}
+                        onClick={() => {
+                          // For external links or different pages, close the menu.
+                          // For hash links on the same page, keep it open.
+                          if (!link.href.startsWith('/#') || pathname !== '/') {
+                            setIsMobileMenuOpen(false);
+                          }
+                        }}
                         className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary hover:bg-primary/5"
                         prefetch={link.prefetch}
                       >
@@ -133,7 +115,7 @@ const Header = () => {
                   </nav>
                   <div className="mt-auto">
                     <Button size="lg" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" asChild>
-                        <a href="mailto:aplikasiwiru@gmail.com" onClick={() => setIsMobileMenuOpen(false)}>
+                        <a href="mailto:aplikasiwiru@gmail.com">
                           Contact Us
                         </a>
                     </Button>
