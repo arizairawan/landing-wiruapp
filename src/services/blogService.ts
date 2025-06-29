@@ -3,7 +3,8 @@ import { db } from '@/lib/firebase';
 import { collection, getDocs, query, where, orderBy, limit, startAfter, doc, getDoc, DocumentSnapshot, Timestamp } from 'firebase/firestore';
 import type { Blog } from '@/data/blogs';
 
-const blogsCollection = collection(db, 'blogs');
+const blogsCollectionName = process.env.NEXT_PUBLIC_FIREBASE_BLOGS_COLLECTION || 'blogs';
+const blogsCollection = collection(db, blogsCollectionName);
 
 // Helper to convert Firestore doc to Blog object
 const fromFirestore = (snapshot: DocumentSnapshot): Blog => {
