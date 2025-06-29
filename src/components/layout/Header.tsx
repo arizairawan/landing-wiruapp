@@ -4,7 +4,15 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetClose,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+} from '@/components/ui/sheet';
 import { Menu, Rocket, Wrench, Newspaper, Users, Link2, Info } from 'lucide-react';
 
 const Header = () => {
@@ -65,6 +73,10 @@ const Header = () => {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right">
+                <SheetHeader className="sr-only">
+                  <SheetTitle>Menu</SheetTitle>
+                  <SheetDescription>Main navigation links for the Wiru.app website.</SheetDescription>
+                </SheetHeader>
                 <div className="flex flex-col gap-4 py-6 h-full">
                   <SheetClose asChild>
                     <Link href="/" className="flex items-center gap-2 mb-4">
