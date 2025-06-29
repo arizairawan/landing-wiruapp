@@ -115,25 +115,31 @@ export default async function BlogDetailPage({ params }: Props) {
         </header>
         
         <div className="prose prose-lg max-w-none text-foreground prose-headings:text-primary prose-headings:font-headline prose-a:text-primary hover:prose-a:underline prose-strong:text-foreground prose-blockquote:border-primary prose-blockquote:text-muted-foreground prose-li:marker:text-primary">
-          {blog.description.split('\\n').map((paragraph, index) => {
-            if (paragraph.startsWith('### ')) {
-                return <h3 key={index} className="text-2xl font-headline font-semibold mt-6 mb-3">{paragraph.substring(4)}</h3>;
+          {blog.description.split('\n').map((paragraph, index) => {
+            const trimmedParagraph = paragraph.trim();
+            if (trimmedParagraph.startsWith('### ')) {
+                return <h3 key={index} className="text-2xl font-headline font-semibold mt-6 mb-3">{trimmedParagraph.substring(4)}</h3>;
             }
-            if (paragraph.startsWith('#### ')) {
-                return <h4 key={index} className="text-xl font-headline font-semibold mt-5 mb-2">{paragraph.substring(5)}</h4>;
+            if (trimmedParagraph.startsWith('#### ')) {
+                return <h4 key={index} className="text-xl font-headline font-semibold mt-5 mb-2">{trimmedParagraph.substring(5)}</h4>;
             }
-            if (paragraph.trim().startsWith('```')) {
-                const codeLines = blog.description.split('```')[1].trim().split('\\n').slice(1);
+            if (trimmedParagraph.startsWith('```')) {
+                // This logic is basic and might need improvement for complex code blocks
+                const codeContent = blog.description.split('```')[1] || '';
+                const codeLines = codeContent.trim().split('\n').slice(1).join('\n');
                 return (
                     <pre key={index} className="bg-muted/50 p-4 rounded-md overflow-x-auto">
-                        <code>{codeLines.join('\n')}</code>
+                        <code>{codeLines}</code>
                     </pre>
                 )
             }
-            if (paragraph.trim().startsWith('*   **')) { // Basic list parsing
-                return <li key={index} className="ml-5">{paragraph.replace('*   **', '').replace('**', '')}</li>
+            if (trimmedParagraph.startsWith('* ')) { // Basic list parsing
+                return <li key={index} className="ml-5">{trimmedParagraph.substring(2)}</li>
             }
-            return <p key={index} className="mb-4 leading-relaxed">{paragraph}</p>;
+            if(trimmedParagraph) {
+              return <p key={index} className="mb-4 leading-relaxed">{paragraph}</p>;
+            }
+            return null;
           })}
         </div>
       </article>
