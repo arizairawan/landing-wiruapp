@@ -30,22 +30,24 @@ const Header = () => {
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    // If it's a hash link and we are on the homepage, handle scroll manually
+    // For same-page hash links, we handle scrolling manually to ensure reliability on mobile.
     if (href.startsWith('/#') && pathname === '/') {
-      e.preventDefault();
-      setIsMobileMenuOpen(false);
+      e.preventDefault(); // Stop the default link behavior
+
+      const targetId = href.substring(2); // e.g., 'services'
+      const element = document.getElementById(targetId);
       
-      // Allow the sheet to start closing before scrolling
-      setTimeout(() => {
-        const targetId = href.substring(2); // remove '/#'
-        const element = document.getElementById(targetId);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 150);
+      if (element) {
+        // Instantly jump to the section. This is more reliable than smooth scrolling
+        // which can conflict with the menu closing animation.
+        element.scrollIntoView();
+      }
+
+      // Close the menu after handling the scroll.
+      setIsMobileMenuOpen(false);
     } else {
-      // For other links (/blog) or hash links from other pages,
-      // just close the menu and let Next's Link handle the navigation.
+      // For other links (like to /blog) or hash links from other pages,
+      // just close the menu and let Next's Link component handle navigation.
       setIsMobileMenuOpen(false);
     }
   };
