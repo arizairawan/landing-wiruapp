@@ -5,6 +5,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getBlogBySlug, getAllBlogSlugs } from '@/services/blogService';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
+import { Button } from '@/components/ui/button';
+import { Twitter, Facebook, Linkedin } from 'lucide-react';
 
 type Props = {
   params: { slug: string };
@@ -78,6 +80,15 @@ export default async function BlogDetailPage({ params }: Props) {
     notFound();
   }
 
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://wiru.app';
+  const postUrl = `${baseUrl}/blog/${params.slug}`;
+  const encodedUrl = encodeURIComponent(postUrl);
+  const encodedTitle = encodeURIComponent(blog.title);
+
+  const twitterShareUrl = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`;
+  const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+  const linkedinShareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${encodedTitle}`;
+
   return (
     <div className="container mx-auto px-4 md:px-6 py-12 md:py-16">
         <Breadcrumb className="mb-8">
@@ -119,6 +130,30 @@ export default async function BlogDetailPage({ params }: Props) {
           dangerouslySetInnerHTML={{ __html: blog.description }}
         />
       </article>
+
+      <div className="max-w-4xl mx-auto mt-12 pt-8 border-t">
+        <h3 className="text-lg font-semibold text-center mb-4 text-foreground">Share this article</h3>
+        <div className="flex justify-center gap-4">
+          <Button variant="outline" asChild>
+            <a href={twitterShareUrl} target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter" className="flex items-center gap-2">
+              <Twitter className="h-5 w-5" />
+              <span className="hidden sm:inline">Twitter</span>
+            </a>
+          </Button>
+          <Button variant="outline" asChild>
+            <a href={facebookShareUrl} target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook" className="flex items-center gap-2">
+              <Facebook className="h-5 w-5" />
+               <span className="hidden sm:inline">Facebook</span>
+            </a>
+          </Button>
+          <Button variant="outline" asChild>
+            <a href={linkedinShareUrl} target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn" className="flex items-center gap-2">
+              <Linkedin className="h-5 w-5" />
+               <span className="hidden sm:inline">LinkedIn</span>
+            </a>
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }
