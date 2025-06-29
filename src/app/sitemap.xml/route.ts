@@ -1,5 +1,6 @@
 
 import { type NextRequest } from 'next/server';
+import { mockBlogs } from '@/data/blogs';
 
 export async function GET(request: NextRequest) {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://wiru.app';
@@ -9,11 +10,12 @@ export async function GET(request: NextRequest) {
   const staticPages = [
     { path: '/', priority: '1.0', changefreq: 'daily' },
     { path: '/templates', priority: '0.9', changefreq: 'weekly' },
+    { path: '/blog', priority: '0.9', changefreq: 'weekly' },
     { path: '/privacy-policy', priority: '0.3', changefreq: 'monthly' },
     { path: '/terms-of-service', priority: '0.3', changefreq: 'monthly' },
   ];
 
-  const sitemapContent = staticPages
+  const staticUrls = staticPages
     .map((page) => {
       const url = `${baseUrl}${page.path === '/' ? '' : page.path}`;
       return `
@@ -26,9 +28,22 @@ export async function GET(request: NextRequest) {
     })
     .join('');
 
+  const blogUrls = mockBlogs
+    .map((blog) => {
+      return `
+  <url>
+    <loc>${baseUrl}/blog/${blog.slug}</loc>
+    <lastmod>${blog.created.toISOString()}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>`;
+    })
+    .join('');
+
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  ${sitemapContent}
+  ${staticUrls}
+  ${blogUrls}
 </urlset>`;
 
   return new Response(sitemap, {

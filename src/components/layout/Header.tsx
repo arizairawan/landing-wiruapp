@@ -34,6 +34,13 @@ const Header = () => {
           >
             Services
           </Link>
+           <Link
+            href="/blog"
+            className="text-sm font-medium hover:text-primary hover:bg-primary/5 text-foreground/80 transition-all px-3 py-2 rounded-md"
+            prefetch={true}
+          >
+            Blog
+          </Link>
           <Link
             href="/#clients"
             className="text-sm font-medium hover:text-primary hover:bg-primary/5 text-foreground/80 transition-all px-3 py-2 rounded-md"
