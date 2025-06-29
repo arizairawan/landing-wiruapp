@@ -1,3 +1,4 @@
+
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
@@ -21,6 +22,12 @@ const nextConfig: NextConfig = {
         hostname: 'link.wiru.app',
         port: '',
         pathname: '/assets/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'firebasestorage.googleapis.com',
+        port: '',
+        pathname: '/**',
       },
     ],
   },
