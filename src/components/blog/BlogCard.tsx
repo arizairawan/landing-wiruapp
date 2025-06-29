@@ -11,7 +11,7 @@ interface BlogCardProps {
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
-  const excerpt = blog.description.split('\n').find(p => p.trim() !== '' && !p.startsWith('#'))?.substring(0, 120) + '...';
+  const excerpt = blog.metadesc;
 
   return (
     <Card className="overflow-hidden h-full flex flex-col group">
