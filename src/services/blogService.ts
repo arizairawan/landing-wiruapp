@@ -17,7 +17,6 @@ const fromFirestore = (snapshot: DocumentSnapshot): Blog => {
         title: data.title,
         slug: data.slug,
         image: data.image,
-        dataAiHint: data.dataAiHint,
         description: data.description,
         created: (data.created as Timestamp).toDate(),
         metadesc: data.metadesc,

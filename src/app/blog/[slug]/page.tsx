@@ -104,7 +104,6 @@ export default async function BlogDetailPage({ params }: Props) {
               fill
               className="object-cover"
               priority
-              data-ai-hint={blog.dataAiHint}
             />
           </div>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-headline font-bold text-primary mb-3">

@@ -4,7 +4,6 @@ export interface Blog {
   title: string;
   slug: string;
   image: string;
-  dataAiHint?: string;
   description: string; // This will hold the full blog content in Markdown format
   created: Date;
   metadesc: string;

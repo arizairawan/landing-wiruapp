@@ -22,7 +22,6 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
             alt={blog.title}
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-105"
-            data-ai-hint={blog.dataAiHint}
           />
         </Link>
       </CardHeader>
