@@ -29,6 +29,13 @@ const Header = () => {
     { href: "/#about", label: "About", icon: Info, prefetch: false },
   ];
 
+  const handleMobileLinkClick = () => {
+    // Close the menu after a 2-second delay
+    setTimeout(() => {
+      setIsMobileMenuOpen(false);
+    }, 2000);
+  };
+
   return (
     <header className="bg-background/90 text-foreground sticky top-0 z-50 border-b backdrop-blur-sm">
       <div className="container mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
@@ -98,13 +105,7 @@ const Header = () => {
                       <Link
                         key={link.href}
                         href={link.href}
-                        onClick={() => {
-                          // For external links or different pages, close the menu.
-                          // For hash links on the same page, keep it open.
-                          if (!link.href.startsWith('/#') || pathname !== '/') {
-                            setIsMobileMenuOpen(false);
-                          }
-                        }}
+                        onClick={handleMobileLinkClick}
                         className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary hover:bg-primary/5"
                         prefetch={link.prefetch}
                       >
