@@ -3,25 +3,55 @@
 
 import { useState, useEffect } from 'react';
 import type { Template, Category } from '@/data/templates';
-import { mockTemplates, categories } from '@/data/templates';
+import { categories } from '@/data/templates';
+import { getTemplates } from '@/services/templateService';
 import TemplateGrid from '@/components/templates/TemplateGrid';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export default function AllTemplatesPage() {
-  const [filteredTemplates, setFilteredTemplates] = useState<Template[]>(mockTemplates);
+  const [allTemplates, setAllTemplates] = useState<Template[]>([]);
+  const [filteredTemplates, setFilteredTemplates] = useState<Template[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<Category>('All');
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchTemplates = async () => {
+      setIsLoading(true);
+      const templates = await getTemplates();
+      setAllTemplates(templates);
+      setFilteredTemplates(templates); // Initially show all
+      setIsLoading(false);
+    };
+    fetchTemplates();
+  }, []);
 
   useEffect(() => {
     if (selectedCategory === 'All') {
-      setFilteredTemplates(mockTemplates);
+      setFilteredTemplates(allTemplates);
     } else {
-      const tempTemplates = mockTemplates.filter(template => template.category === selectedCategory);
+      const tempTemplates = allTemplates.filter(template => template.category === selectedCategory);
       setFilteredTemplates(tempTemplates);
     }
-  }, [selectedCategory]);
+  }, [selectedCategory, allTemplates]);
+
+  const TemplateSkeleton = () => (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr">
+      {[...Array(8)].map((_, i) => (
+        <div key={i} className="flex flex-col space-y-3 rounded-lg border bg-card text-card-foreground shadow-sm">
+          <Skeleton className="aspect-[4/3] w-full rounded-t-lg" />
+          <div className="space-y-3 p-4">
+            <Skeleton className="h-5 w-3/4" />
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-5/6" />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 
   return (
     <section className="py-12 md:py-16 lg:py-20">
@@ -60,7 +90,7 @@ export default function AllTemplatesPage() {
           ))}
         </div>
 
-        <TemplateGrid templates={filteredTemplates} />
+        {isLoading ? <TemplateSkeleton /> : <TemplateGrid templates={filteredTemplates} />}
       </div>
     </section>
   );

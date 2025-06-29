@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState } from 'react';
@@ -6,7 +7,8 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/componen
 import { Button } from '@/components/ui/button';
 import { Lightbulb } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
-import { mockTemplates, type Template } from '@/data/templates';
+import type { Template } from '@/data/templates';
+import { getTemplates } from '@/services/templateService';
 import TemplateCard from '@/components/templates/TemplateCard';
 
 const AiRecommendationSection = () => {
@@ -21,10 +23,14 @@ const AiRecommendationSection = () => {
   };
 
   useEffect(() => {
-    const fetchRecommendations = async () => {
+    const fetchAndRecommend = async () => {
       setIsLoading(true);
       setError(null);
       try {
+        // 1. Fetch all templates first
+        const templates = await getTemplates();
+
+        // 2. Fetch AI recommendations
         const response = await fetch('/api/run/templateRecommendationFlow', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -38,9 +44,10 @@ const AiRecommendationSection = () => {
         
         const result: TemplateRecommendationOutput = await response.json();
 
+        // 3. Filter the fetched templates based on recommendations
         if (result && result.templateRecommendations) {
           const recommendedTemplates = result.templateRecommendations
-            .map(name => mockTemplates.find(t => t.name.toLowerCase() === name.toLowerCase() || t.tags.map(tag => tag.toLowerCase()).includes(name.toLowerCase()) ))
+            .map(name => templates.find(t => t.name.toLowerCase() === name.toLowerCase() || t.tags.map(tag => tag.toLowerCase()).includes(name.toLowerCase()) ))
             .filter((t): t is Template => Boolean(t)) 
             .reduce((unique, item) => unique.find(t => t.id === item.id) ? unique : [...unique, item], [] as Template[]) // Deduplicate
             .slice(0, 3); 
@@ -57,7 +64,7 @@ const AiRecommendationSection = () => {
       }
     };
 
-    fetchRecommendations();
+    fetchAndRecommend();
   }, []); // Empty dependency array: fetch only once on mount with static userHistory
 
   return (
@@ -72,7 +79,7 @@ const AiRecommendationSection = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[...Array(3)].map((_, index) => (
               <Card key={index} className="overflow-hidden">
-                <Skeleton className="aspect-[3/2] w-full" />
+                <Skeleton className="aspect-[4/3] w-full" />
                 <CardContent className="p-4">
                   <Skeleton className="h-6 w-3/4 mb-2" />
                   <Skeleton className="h-4 w-full mb-1" />
@@ -99,8 +106,6 @@ const AiRecommendationSection = () => {
             <CardContent>
               <p>We couldn't fetch recommendations for you at this moment.</p>
               <p className="text-sm mt-2">Error: {error}</p>
-              {/* Avoid reload, let user continue browsing other sections.
-              <Button variant="outline" className="mt-4" onClick={() => window.location.reload()}>Try Again</Button> */}
             </CardContent>
           </Card>
         )}

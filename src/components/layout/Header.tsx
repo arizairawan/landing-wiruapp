@@ -23,10 +23,10 @@ const Header = () => {
   const navLinks = [
     { href: "/#templates", label: "Templates", icon: Rocket, prefetch: false },
     { href: "/#services", label: "Services", icon: Wrench, prefetch: false },
-    { href: "/blog", label: "Blog", icon: Newspaper, prefetch: true },
     { href: "/#clients", label: "Clients", icon: Users, prefetch: false },
     { href: "/#wiru-link", label: "Link", icon: Link2, prefetch: false },
     { href: "/#about", label: "About", icon: Info, prefetch: false },
+    { href: "/blog", label: "Blog", icon: Newspaper, prefetch: true },
   ];
 
   const handleMobileLinkClick = () => {

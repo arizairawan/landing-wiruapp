@@ -1,21 +1,50 @@
+
 "use client"; 
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import type { Template } from '@/data/templates';
-import { mockTemplates } from '@/data/templates';
+import { getTemplates } from '@/services/templateService';
 import TemplateGrid from '@/components/templates/TemplateGrid';
 import { Button } from '@/components/ui/button';
 import { Rocket, Wrench, CheckCircle, ArrowRight, Instagram, Linkedin, Mail } from 'lucide-react';
 import Image from 'next/image';
 import ClientMarquee from '@/components/layout/ClientMarquee';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export default function HomePage() {
-  const homePageTemplates = mockTemplates.slice(0, 4).map(template => ({
-    ...template,
-    gridSpanDesktop: 1, 
-    gridSpanMobile: 1,
-  }));
+  const [homePageTemplates, setHomePageTemplates] = useState<Template[]>([]);
+  const [isLoadingTemplates, setIsLoadingTemplates] = useState(true);
+
+  useEffect(() => {
+    const fetchHomePageTemplates = async () => {
+      setIsLoadingTemplates(true);
+      const allTemplates = await getTemplates();
+      const templatesForHome = allTemplates.slice(0, 4).map(template => ({
+        ...template,
+        gridSpanDesktop: 1, 
+        gridSpanMobile: 1,
+      }));
+      setHomePageTemplates(templatesForHome);
+      setIsLoadingTemplates(false);
+    };
+    fetchHomePageTemplates();
+  }, []);
+
+  const TemplateSkeleton = () => (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr">
+      {[...Array(4)].map((_, i) => (
+        <div key={i} className="flex flex-col space-y-3 rounded-lg border bg-card text-card-foreground shadow-sm">
+          <Skeleton className="aspect-[4/3] w-full rounded-t-lg" />
+          <div className="space-y-3 p-4">
+            <Skeleton className="h-5 w-3/4" />
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-5/6" />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 
   return (
     <>
@@ -54,8 +83,8 @@ export default function HomePage() {
           <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
             Find the perfect starting point for your next project. High-quality, customizable templates ready for you.
           </p>
-          <TemplateGrid templates={homePageTemplates} />
-          {mockTemplates.length > 4 && (
+          {isLoadingTemplates ? <TemplateSkeleton /> : <TemplateGrid templates={homePageTemplates} />}
+          {!isLoadingTemplates && homePageTemplates.length > 0 && (
             <div className="text-center mt-12">
               <Button size="lg" variant="outline" asChild className="text-primary hover:bg-primary/10 hover:text-primary border-primary">
                 <Link href="/templates">

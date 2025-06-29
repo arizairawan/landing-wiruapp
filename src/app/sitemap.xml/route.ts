@@ -10,6 +10,7 @@ export async function GET(request: NextRequest) {
   const staticPages = [
     { path: '/', priority: '1.0', changefreq: 'daily' },
     { path: '/templates', priority: '0.9', changefreq: 'weekly' },
+    { path: '/clients', priority: '0.7', changefreq: 'weekly' },
     { path: '/blog', priority: '0.9', changefreq: 'weekly' },
     { path: '/privacy-policy', priority: '0.3', changefreq: 'monthly' },
     { path: '/terms-of-service', priority: '0.3', changefreq: 'monthly' },
