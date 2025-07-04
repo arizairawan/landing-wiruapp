@@ -14,10 +14,7 @@ export default function AllTemplatesPage() {
   const [allTemplates, setAllTemplates] = useState<Template[]>([]);
   const [filteredTemplates, setFilteredTemplates] = useState<Template[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [filters, setFilters] = useState<{ searchTerm: string; technology: Technology }>({
-    searchTerm: '',
-    technology: 'All',
-  });
+  const [selectedTechnology, setSelectedTechnology] = useState<Technology>('All');
 
   useEffect(() => {
     const fetchTemplates = async () => {
@@ -32,23 +29,15 @@ export default function AllTemplatesPage() {
 
   useEffect(() => {
     const applyFilters = () => {
-      let tempTemplates = [...allTemplates];
-
-      // Filter by search term
-      if (filters.searchTerm) {
-        const lowercasedFilter = filters.searchTerm.toLowerCase();
-        tempTemplates = tempTemplates.filter(template =>
-          template.name.toLowerCase().includes(lowercasedFilter) ||
-          template.description.toLowerCase().includes(lowercasedFilter)
-        );
+      if (selectedTechnology === 'All') {
+        setFilteredTemplates(allTemplates);
+        return;
       }
-
-      // Filter by technology/tag
-      if (filters.technology !== 'All') {
-        tempTemplates = tempTemplates.filter(template =>
-          template.tags.includes(filters.technology)
-        );
-      }
+      
+      const lowercasedTech = selectedTechnology.toLowerCase();
+      const tempTemplates = allTemplates.filter(template =>
+        template.tags.some(tag => tag.toLowerCase() === lowercasedTech)
+      );
       
       setFilteredTemplates(tempTemplates);
     };
@@ -56,7 +45,7 @@ export default function AllTemplatesPage() {
     if(!isLoading) {
       applyFilters();
     }
-  }, [filters, allTemplates, isLoading]);
+  }, [selectedTechnology, allTemplates, isLoading]);
 
 
   const TemplateSkeleton = () => (
@@ -95,7 +84,10 @@ export default function AllTemplatesPage() {
           Browse our full collection of high-quality, customizable templates. Find the perfect foundation for your next project.
         </p>
 
-        <TemplateFilter onFilterChange={setFilters} />
+        <TemplateFilter 
+          selectedTechnology={selectedTechnology} 
+          onTechnologyChange={setSelectedTechnology} 
+        />
         
         {isLoading ? <TemplateSkeleton /> : <TemplateGrid templates={filteredTemplates} />}
       </div>

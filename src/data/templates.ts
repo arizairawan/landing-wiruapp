@@ -14,5 +14,5 @@ export interface Template {
   gridSpanMobile?: number; 
 }
 
-export const technologies = ['All', 'NextJS', 'React', 'VueJS', 'TailwindCSS', 'Figma', 'Firebase', 'Gatsby', 'Online Store', 'SaaS', 'Portfolio', 'Mobile', 'Productivity', 'Blog'] as const;
+export const technologies = ['All', 'Website', 'Mobile', 'UI Kit', 'NextJs', 'Flutter', 'Angular'] as const;
 export type Technology = typeof technologies[number];
