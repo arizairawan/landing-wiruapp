@@ -13,7 +13,7 @@ interface TemplateCardProps {
 
 const TemplateCard: React.FC<TemplateCardProps> = ({ template }) => {
   const buyUrl = `https://studio.wiru.app/login?transactionParam=${template.id}`;
-  const formattedPrice = `Rp ${template.basic_price.toLocaleString('en-US')}`;
+  const formattedPrice = `Rp ${template.basic_price.toLocaleString('id-ID')}`;
   
   return (
     <Card className="overflow-hidden h-full flex flex-col group">
