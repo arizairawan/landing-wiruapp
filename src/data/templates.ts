@@ -4,7 +4,6 @@ export interface Template {
   slug: string;
   name: string;
   description: string;
-  category: 'Website' | 'Application' | 'UI Kit';
   tags: string[];
   image: string;
   dataAiHint?: string;
@@ -14,9 +13,6 @@ export interface Template {
   gridSpanDesktop?: number; 
   gridSpanMobile?: number; 
 }
-
-export const categories = ['All', 'Website', 'Application', 'UI Kit'] as const;
-export type Category = typeof categories[number];
 
 export const technologies = ['All', 'NextJS', 'React', 'VueJS', 'TailwindCSS', 'Figma', 'Firebase', 'Gatsby', 'Online Store', 'SaaS', 'Portfolio', 'Mobile', 'Productivity', 'Blog'] as const;
 export type Technology = typeof technologies[number];

@@ -2,20 +2,15 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import type { Template, Category } from '@/data/templates';
-import { categories } from '@/data/templates';
+import type { Template } from '@/data/templates';
 import { getTemplates } from '@/services/templateService';
 import TemplateGrid from '@/components/templates/TemplateGrid';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
 import { Skeleton } from '@/components/ui/skeleton';
 
 export default function AllTemplatesPage() {
   const [allTemplates, setAllTemplates] = useState<Template[]>([]);
-  const [filteredTemplates, setFilteredTemplates] = useState<Template[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<Category>('All');
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -23,20 +18,10 @@ export default function AllTemplatesPage() {
       setIsLoading(true);
       const templates = await getTemplates();
       setAllTemplates(templates);
-      setFilteredTemplates(templates); // Initially show all
       setIsLoading(false);
     };
     fetchTemplates();
   }, []);
-
-  useEffect(() => {
-    if (selectedCategory === 'All') {
-      setFilteredTemplates(allTemplates);
-    } else {
-      const tempTemplates = allTemplates.filter(template => template.category === selectedCategory);
-      setFilteredTemplates(tempTemplates);
-    }
-  }, [selectedCategory, allTemplates]);
 
   const TemplateSkeleton = () => (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr">
@@ -74,23 +59,7 @@ export default function AllTemplatesPage() {
           Browse our full collection of high-quality, customizable templates. Find the perfect foundation for your next project.
         </p>
         
-        <div className="flex justify-center flex-wrap gap-2 mb-10">
-          {categories.map((category) => (
-            <Button
-              key={category}
-              variant={selectedCategory === category ? 'default' : 'outline'}
-              className={cn(
-                "rounded-full",
-                selectedCategory !== category && "border-primary text-primary hover:bg-primary/10 hover:text-primary"
-              )}
-              onClick={() => setSelectedCategory(category)}
-            >
-              {category}
-            </Button>
-          ))}
-        </div>
-
-        {isLoading ? <TemplateSkeleton /> : <TemplateGrid templates={filteredTemplates} />}
+        {isLoading ? <TemplateSkeleton /> : <TemplateGrid templates={allTemplates} />}
       </div>
     </section>
   );

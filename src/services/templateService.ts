@@ -18,7 +18,6 @@ const fromFirestore = (snapshot: DocumentSnapshot): Template => {
         slug: data.slug || '',
         name: data.name || 'Untitled Template',
         description: data.description || 'No description available.',
-        category: data.category || 'Website',
         tags: Array.isArray(data.tags) ? data.tags : [],
         image: data.image || 'https://placehold.co/600x400.png',
         dataAiHint: data.dataAiHint || 'website app',

@@ -32,7 +32,6 @@ const TemplateCard: React.FC<TemplateCardProps> = ({ template }) => {
         <CardTitle className="text-lg font-headline mb-2 line-clamp-2">{template.name}</CardTitle>
         <p className="text-sm text-muted-foreground mb-3 line-clamp-3 flex-grow">{template.description}</p>
         <div className="flex flex-wrap gap-1 mt-auto mb-3">
-          <Badge variant="secondary" className="text-xs">{template.category}</Badge>
           {template.tags.slice(0, 2).map(tag => (
             <Badge key={tag} variant="outline" className="text-xs">{tag}</Badge>
           ))}
