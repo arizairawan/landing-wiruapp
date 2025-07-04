@@ -1,28 +1,24 @@
+
 "use client";
 
-import type { ChangeEvent, FormEvent } from 'react';
+import type { ChangeEvent } from 'react';
 import { useState, useEffect } from 'react';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Search } from 'lucide-react';
-import type { Category, Technology } from '@/data/templates';
-import { categories, technologies } from '@/data/templates';
+import type { Technology } from '@/data/templates';
+import { technologies } from '@/data/templates';
 
 interface TemplateFilterProps {
-  onFilterChange: (filters: { searchTerm: string; category: Category; technology: Technology }) => void;
+  onFilterChange: (filters: { searchTerm: string; technology: Technology }) => void;
 }
 
 const TemplateFilter: React.FC<TemplateFilterProps> = ({ onFilterChange }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [category, setCategory] = useState<Category>('All');
   const [technology, setTechnology] = useState<Technology>('All');
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
-  };
-
-  const handleCategoryChange = (value: string) => {
-    setCategory(value as Category);
   };
 
   const handleTechnologyChange = (value: string) => {
@@ -30,14 +26,14 @@ const TemplateFilter: React.FC<TemplateFilterProps> = ({ onFilterChange }) => {
   };
   
   useEffect(() => {
-    onFilterChange({ searchTerm, category, technology });
-  }, [searchTerm, category, technology, onFilterChange]);
+    onFilterChange({ searchTerm, technology });
+  }, [searchTerm, technology, onFilterChange]);
 
 
   return (
     <form onSubmit={(e) => e.preventDefault()} className="mb-8 p-6 bg-card rounded-lg shadow-md">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
-        <div className="md:col-span-3 lg:col-span-1">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-end">
+        <div>
           <label htmlFor="search" className="block text-sm font-medium text-foreground mb-1">Search Templates</label>
           <div className="relative">
             <Input
@@ -52,20 +48,6 @@ const TemplateFilter: React.FC<TemplateFilterProps> = ({ onFilterChange }) => {
           </div>
         </div>
         
-        <div>
-          <label htmlFor="category" className="block text-sm font-medium text-foreground mb-1">Category</label>
-          <Select value={category} onValueChange={handleCategoryChange}>
-            <SelectTrigger id="category" className="text-base">
-              <SelectValue placeholder="Select category" />
-            </SelectTrigger>
-            <SelectContent>
-              {categories.map(cat => (
-                <SelectItem key={cat} value={cat} className="text-base">{cat}</SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-
         <div>
           <label htmlFor="technology" className="block text-sm font-medium text-foreground mb-1">Technology / Tag</label>
           <Select value={technology} onValueChange={handleTechnologyChange}>

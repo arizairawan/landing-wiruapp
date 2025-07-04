@@ -2,26 +2,62 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import type { Template } from '@/data/templates';
+import type { Template, Technology } from '@/data/templates';
 import { getTemplates } from '@/services/templateService';
 import TemplateGrid from '@/components/templates/TemplateGrid';
+import TemplateFilter from '@/components/templates/TemplateFilter';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 import Link from 'next/link';
 import { Skeleton } from '@/components/ui/skeleton';
 
 export default function AllTemplatesPage() {
   const [allTemplates, setAllTemplates] = useState<Template[]>([]);
+  const [filteredTemplates, setFilteredTemplates] = useState<Template[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [filters, setFilters] = useState<{ searchTerm: string; technology: Technology }>({
+    searchTerm: '',
+    technology: 'All',
+  });
 
   useEffect(() => {
     const fetchTemplates = async () => {
       setIsLoading(true);
       const templates = await getTemplates();
       setAllTemplates(templates);
+      setFilteredTemplates(templates);
       setIsLoading(false);
     };
     fetchTemplates();
   }, []);
+
+  useEffect(() => {
+    const applyFilters = () => {
+      let tempTemplates = [...allTemplates];
+
+      // Filter by search term
+      if (filters.searchTerm) {
+        const lowercasedFilter = filters.searchTerm.toLowerCase();
+        tempTemplates = tempTemplates.filter(template =>
+          template.name.toLowerCase().includes(lowercasedFilter) ||
+          template.description.toLowerCase().includes(lowercasedFilter)
+        );
+      }
+
+      // Filter by technology/tag
+      if (filters.technology !== 'All') {
+        tempTemplates = tempTemplates.filter(template =>
+          template.tags.includes(filters.technology)
+        );
+      }
+      
+      setFilteredTemplates(tempTemplates);
+    };
+    
+    if(!isLoading) {
+      applyFilters();
+    }
+  }, [filters, allTemplates, isLoading]);
+
 
   const TemplateSkeleton = () => (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr">
@@ -58,8 +94,10 @@ export default function AllTemplatesPage() {
         <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
           Browse our full collection of high-quality, customizable templates. Find the perfect foundation for your next project.
         </p>
+
+        <TemplateFilter onFilterChange={setFilters} />
         
-        {isLoading ? <TemplateSkeleton /> : <TemplateGrid templates={allTemplates} />}
+        {isLoading ? <TemplateSkeleton /> : <TemplateGrid templates={filteredTemplates} />}
       </div>
     </section>
   );
