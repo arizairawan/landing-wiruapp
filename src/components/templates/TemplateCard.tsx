@@ -12,14 +12,15 @@ interface TemplateCardProps {
 }
 
 const TemplateCard: React.FC<TemplateCardProps> = ({ template }) => {
-  const buyUrl = `https://studio.wiru.app/login?transactionParam=${template.slug}`;
+  const buyUrl = `https://studio.wiru.app/login?transactionParam=${template.id}`;
+  const formattedPrice = `Rp ${template.basic_price.toLocaleString('en-US')}`;
   
   return (
     <Card className="overflow-hidden h-full flex flex-col group">
       <CardHeader className="p-0 relative">
         <div className="aspect-[4/3] w-full overflow-hidden">
           <Image
-            src={template.imageUrl}
+            src={template.image}
             alt={template.name}
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -38,10 +39,10 @@ const TemplateCard: React.FC<TemplateCardProps> = ({ template }) => {
         </div>
       </CardContent>
       <CardFooter className="p-4 flex flex-col sm:flex-row justify-between items-center gap-2 border-t">
-        <p className="text-xl font-semibold text-primary">${template.basic_price}</p>
+        <p className="text-xl font-semibold text-primary">{formattedPrice}</p>
         <div className="flex gap-2">
           <Button variant="outline" size="sm" asChild>
-            <Link href={template.preview_link || '#'}>
+            <Link href={template.preview_link || '#'} target="_blank" rel="noopener noreferrer">
               <Eye className="mr-2 h-4 w-4" /> Preview
             </Link>
           </Button>

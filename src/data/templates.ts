@@ -6,7 +6,7 @@ export interface Template {
   description: string;
   category: 'Website' | 'Application' | 'UI Kit';
   tags: string[];
-  imageUrl: string;
+  image: string;
   dataAiHint?: string;
   basic_price: number;
   features: string[];
