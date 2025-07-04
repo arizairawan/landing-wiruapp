@@ -4,7 +4,7 @@
 import type { ChangeEvent } from 'react';
 import { useState, useEffect } from 'react';
 import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Button } from '@/components/ui/button';
 import { Search } from 'lucide-react';
 import type { Technology } from '@/data/templates';
 import { technologies } from '@/data/templates';
@@ -21,8 +21,8 @@ const TemplateFilter: React.FC<TemplateFilterProps> = ({ onFilterChange }) => {
     setSearchTerm(e.target.value);
   };
 
-  const handleTechnologyChange = (value: string) => {
-    setTechnology(value as Technology);
+  const handleTechnologyChange = (tech: Technology) => {
+    setTechnology(tech);
   };
   
   useEffect(() => {
@@ -31,38 +31,43 @@ const TemplateFilter: React.FC<TemplateFilterProps> = ({ onFilterChange }) => {
 
 
   return (
-    <form onSubmit={(e) => e.preventDefault()} className="mb-8 p-6 bg-card rounded-lg shadow-md">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-end">
-        <div>
-          <label htmlFor="search" className="block text-sm font-medium text-foreground mb-1">Search Templates</label>
-          <div className="relative">
-            <Input
-              type="text"
-              id="search"
-              placeholder="Keywords (e.g., E-commerce, SaaS)"
-              value={searchTerm}
-              onChange={handleSearchChange}
-              className="pr-10 text-base"
-            />
-            <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-          </div>
-        </div>
-        
-        <div>
-          <label htmlFor="technology" className="block text-sm font-medium text-foreground mb-1">Technology / Tag</label>
-          <Select value={technology} onValueChange={handleTechnologyChange}>
-            <SelectTrigger id="technology" className="text-base">
-              <SelectValue placeholder="Select technology or tag" />
-            </SelectTrigger>
-            <SelectContent>
-              {technologies.map(tech => (
-                <SelectItem key={tech} value={tech} className="text-base">{tech}</SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+    <div className="mb-8 p-6 bg-card rounded-lg shadow-md space-y-6">
+      <div>
+        <label htmlFor="search" className="block text-sm font-medium text-foreground mb-2">
+          Search Templates
+        </label>
+        <div className="relative">
+          <Input
+            type="text"
+            id="search"
+            placeholder="Keywords (e.g., E-commerce, SaaS)"
+            value={searchTerm}
+            onChange={handleSearchChange}
+            className="pr-10 text-base"
+          />
+          <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
         </div>
       </div>
-    </form>
+      
+      <div>
+        <label className="block text-sm font-medium text-foreground mb-2">
+          Technology / Tag
+        </label>
+        <div className="flex flex-wrap gap-2">
+          {technologies.map(tech => (
+            <Button
+              key={tech}
+              variant={technology === tech ? 'default' : 'outline'}
+              size="sm"
+              onClick={() => handleTechnologyChange(tech)}
+              className="transition-all"
+            >
+              {tech}
+            </Button>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 
