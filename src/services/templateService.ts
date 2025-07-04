@@ -15,15 +15,16 @@ const fromFirestore = (snapshot: DocumentSnapshot): Template => {
 
     return {
         id: snapshot.id,
+        slug: data.slug || '',
         name: data.name || 'Untitled Template',
         description: data.description || 'No description available.',
         category: data.category || 'Website',
         tags: Array.isArray(data.tags) ? data.tags : [],
         imageUrl: data.imageUrl || 'https://placehold.co/600x400.png',
         dataAiHint: data.dataAiHint || 'website app',
-        priceSourceCode: typeof data.priceSourceCode === 'number' ? data.priceSourceCode : 0,
+        basic_price: typeof data.basic_price === 'number' ? data.basic_price : 0,
         features: Array.isArray(data.features) ? data.features : [],
-        previewUrl: data.previewUrl || '#',
+        preview_link: data.preview_link || '#',
         gridSpanDesktop: typeof data.gridSpanDesktop === 'number' ? data.gridSpanDesktop : 1,
         gridSpanMobile: typeof data.gridSpanMobile === 'number' ? data.gridSpanMobile : 1,
     };

@@ -12,6 +12,8 @@ interface TemplateCardProps {
 }
 
 const TemplateCard: React.FC<TemplateCardProps> = ({ template }) => {
+  const buyUrl = `https://studio.wiru.app/login?transactionParam=${template.slug}`;
+  
   return (
     <Card className="overflow-hidden h-full flex flex-col group">
       <CardHeader className="p-0 relative">
@@ -36,15 +38,17 @@ const TemplateCard: React.FC<TemplateCardProps> = ({ template }) => {
         </div>
       </CardContent>
       <CardFooter className="p-4 flex flex-col sm:flex-row justify-between items-center gap-2 border-t">
-        <p className="text-xl font-semibold text-primary">${template.priceSourceCode}</p>
+        <p className="text-xl font-semibold text-primary">${template.basic_price}</p>
         <div className="flex gap-2">
           <Button variant="outline" size="sm" asChild>
-            <Link href={template.previewUrl || `#preview/${template.id}`}>
+            <Link href={template.preview_link || '#'}>
               <Eye className="mr-2 h-4 w-4" /> Preview
             </Link>
           </Button>
-          <Button size="sm" className="bg-accent hover:bg-accent/90 text-accent-foreground">
-            <ShoppingCart className="mr-2 h-4 w-4" /> Buy
+          <Button size="sm" className="bg-accent hover:bg-accent/90 text-accent-foreground" asChild>
+            <Link href={buyUrl} target="_blank" rel="noopener noreferrer">
+              <ShoppingCart className="mr-2 h-4 w-4" /> Buy
+            </Link>
           </Button>
         </div>
       </CardFooter>

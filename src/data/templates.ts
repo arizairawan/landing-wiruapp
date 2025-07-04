@@ -1,15 +1,16 @@
 
 export interface Template {
   id: string;
+  slug: string;
   name: string;
   description: string;
   category: 'Website' | 'Application' | 'UI Kit';
   tags: string[];
   imageUrl: string;
   dataAiHint?: string;
-  priceSourceCode: number;
+  basic_price: number;
   features: string[];
-  previewUrl?: string;
+  preview_link?: string;
   gridSpanDesktop?: number; 
   gridSpanMobile?: number; 
 }
